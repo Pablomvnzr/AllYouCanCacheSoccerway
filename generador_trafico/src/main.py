@@ -2,12 +2,11 @@ import time
 import random
 import numpy as np
 import yaml
-import os
+import requests
 from distributions import get_distribucion_index
 from query_builder import armar_payload, TIPOS_CONSULTA
 
 def load_config():
-    # Asume que main.py se ejecuta desde la carpeta generador_trafico/
     with open("config.yaml", "r") as f:
         return yaml.safe_load(f)
 
@@ -21,6 +20,8 @@ def iniciar_trafico():
     dist = config["distribucion"]
     alpha = config["parametro_zipf"]
 
+    URL_CACHE = "http://localhost:5000/api/consultas"
+
     print("=========================================")
     print(f"Iniciando Generador de Tráfico (Modular)")
     print(f"Distribución: {dist.upper()}")
@@ -32,6 +33,13 @@ def iniciar_trafico():
         payload = armar_payload(idx)
 
         print(f"[{i+1}/{total}] Enviando {payload['tipo']}: {payload}")
+
+        try:
+            response = requests.post(URL_CACHE, json=payload, timeout=2)
+            print(f"  -> Éxito: Caché respondió con status {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            print(f"  -> Error: La caché no está disponible en {URL_CACHE}")
+
         time.sleep(tasa)
 
     print("\nTráfico finalizado con éxito.")
