@@ -140,3 +140,60 @@ def parse_ultimos_partidos(html: str, solo_liga_primera: bool = True) -> list[di
     """Consulta Q2: últimos partidos disputados de un equipo."""
     soup = BeautifulSoup(html, "html.parser")
     return _parse_seccion_partidos(soup, "Últimos Resultados", solo_liga_primera)
+
+
+def parse_h2h(html: str, equipo_1: str, equipo_2: str) -> list[dict]:
+    """
+    Consulta Q3: historial de enfrentamientos directos entre dos equipos.
+    Parsea el HTML de la página /h2h/general/ de Soccerway.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    enfrentamientos = []
+    urls_vistas = set()
+
+    nombres_objetivo = {equipo_1.strip().lower(), equipo_2.strip().lower()}
+
+    filas = soup.select("a.h2h__row")
+
+    for fila in filas:
+        local_span = fila.select_one("div.h2h__homeParticipant span.wcl-name_jjfMf")
+        visitante_span = fila.select_one("div.h2h__awayParticipant span.wcl-name_jjfMf")
+        equipo_local = local_span.get_text(strip=True) if local_span else None
+        equipo_visitante = visitante_span.get_text(strip=True) if visitante_span else None
+
+        if not equipo_local or not equipo_visitante:
+            continue
+
+        nombres_fila = {equipo_local.strip().lower(), equipo_visitante.strip().lower()}
+
+        if nombres_fila != nombres_objetivo:
+            continue
+
+        url_partido = fila.get("href")
+
+        # Deduplicar: el mismo partido puede aparecer en varias secciones de la página
+        if url_partido in urls_vistas:
+            continue
+        urls_vistas.add(url_partido)
+
+        fecha_span = fila.select_one("span.wcl-dateContent_eEChT")
+        fecha = fecha_span.get_text(strip=True) if fecha_span else None
+
+        evento_span = fila.select_one("span.h2h__event")
+        competicion = evento_span.get("title") if evento_span else None
+
+        marcadores = fila.select("span.h2h__result span.wcl-tableScore_FdKIN")
+        goles_local = marcadores[0].get_text(strip=True) if len(marcadores) > 0 else None
+        goles_visitante = marcadores[1].get_text(strip=True) if len(marcadores) > 1 else None
+
+        enfrentamientos.append({
+            "fecha": fecha,
+            "competicion": competicion,
+            "equipo_local": equipo_local,
+            "equipo_visitante": equipo_visitante,
+            "goles_local": goles_local,
+            "goles_visitante": goles_visitante,
+            "url_partido": url_partido,
+        })
+
+    return enfrentamientos
