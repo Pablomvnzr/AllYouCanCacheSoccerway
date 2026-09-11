@@ -4,7 +4,7 @@ import re
 from fastapi import FastAPI
 from playwright.sync_api import sync_playwright
 
-from parsers import (
+from src.parsers import (
     parse_tabla_posiciones,
     parse_proximos_partidos,
     parse_ultimos_partidos,
