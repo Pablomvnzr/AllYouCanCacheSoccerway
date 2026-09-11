@@ -9,11 +9,14 @@ from parsers import (
     parse_proximos_partidos,
     parse_ultimos_partidos,
     parse_h2h,
+    parse_partidos_liga,
+    filtrar_partidos_por_fecha,
 )
 
 app = FastAPI(title="Scraper Service")
 
 URL_TABLA_POSICIONES = "https://cl.soccerway.com/chile/liga-de-primera/tabla-de-posiciones/"
+URL_LIGA = "https://cl.soccerway.com/chile/liga-de-primera/"
 
 
 def aceptar_cookies(page):
@@ -129,3 +132,15 @@ def historial_enfrentamientos(slug1: str, id1: str, slug2: str, id2: str):
 
     enfrentamientos = parse_h2h(html_h2h, nombre1, nombre2)
     return {"equipo_1": nombre1, "equipo_2": nombre2, "enfrentamientos": enfrentamientos}
+
+
+@app.get("/consulta/partidos-fecha")
+def partidos_por_fecha(fecha_inicio: str, fecha_fin: str):
+    """
+    Consulta Q4: partidos de la liga en un rango de fechas.
+    fecha_inicio y fecha_fin en formato DD.MM (ej: '05.09' y '14.09').
+    """
+    html = obtener_html_renderizado(URL_LIGA)
+    todos = parse_partidos_liga(html)
+    filtrados = filtrar_partidos_por_fecha(todos, fecha_inicio, fecha_fin)
+    return {"periodo": f"{fecha_inicio} a {fecha_fin}", "partidos": filtrados}
