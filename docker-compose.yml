@@ -1,7 +1,9 @@
 services:
   redis:
     image: redis:7-alpine
-    command: redis-server --maxmemory 10mb --maxmemory-policy allkeys-lru
+    command: >-
+      redis-server --maxmemory ${CACHE_MAXMEMORY:-10mb}
+      --maxmemory-policy ${CACHE_EVICTION_POLICY:-allkeys-lru}
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -33,7 +35,7 @@ services:
     environment:
       REDIS_HOST: redis
       SCRAPER_URL: http://scraper-service:8000
-      CACHE_TTL_SECONDS: 30
+      CACHE_TTL_SECONDS: ${CACHE_TTL_SECONDS:-30}
       SCRAPER_TIMEOUT_SECONDS: 120
       METRICS_URL: http://metrics-service:9000/events
     ports:
@@ -55,6 +57,10 @@ services:
     build: ./generador_trafico
     environment:
       CACHE_URL: http://cache-service:5000/api/consultas
+      TRAFFIC_REQUEST_COUNT: ${TRAFFIC_REQUEST_COUNT:-20}
+      TRAFFIC_ARRIVAL_SECONDS: ${TRAFFIC_ARRIVAL_SECONDS:-0.5}
+      TRAFFIC_DISTRIBUTION: ${TRAFFIC_DISTRIBUTION:-zipf}
+      TRAFFIC_ZIPF_ALPHA: ${TRAFFIC_ZIPF_ALPHA:-1.5}
     depends_on:
       cache-service:
         condition: service_healthy

@@ -76,3 +76,14 @@ El resultado incluye hit/miss rate, throughput, latencia promedio/p50/p95, tiemp
 ```bash
 curl -X POST http://localhost:9000/reset
 ```
+
+## Experimentos
+
+Cada archivo JSON de `experiments/configs/` define la distribución de tráfico, cantidad/tasa de solicitudes, tamaño de Redis, política de remoción y TTL. El runner reinicia los servicios, ejecuta el generador, exporta el resumen y eventos crudos en `experiments/results/`, y luego detiene Docker.
+
+```bash
+python3 experiments/run_experiment.py experiments/configs/uniform-2mb-lru.json
+python3 experiments/run_experiment.py experiments/configs/zipf-2mb-lru.json
+```
+
+Las configuraciones incluidas permiten iniciar la comparación Uniforme vs Zipf, tamaños de 2/5/10 MB, LRU vs LFU y TTL de 15/60 segundos. Ajusta `request_count` antes de las corridas finales para obtener muestras suficientes.

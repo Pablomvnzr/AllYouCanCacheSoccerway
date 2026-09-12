@@ -9,7 +9,21 @@ from query_builder import armar_payload, TIPOS_CONSULTA
 
 def load_config():
     with open("config.yaml", "r") as f:
-        return yaml.safe_load(f)
+        config = yaml.safe_load(f)
+
+    # Compose puede sobreescribir estos valores por corrida experimental sin
+    # modificar el archivo base ni reconstruir la imagen.
+    overrides = {
+        "cantidad_solicitudes": ("TRAFFIC_REQUEST_COUNT", int),
+        "tasa_arribo_segundos": ("TRAFFIC_ARRIVAL_SECONDS", float),
+        "distribucion": ("TRAFFIC_DISTRIBUTION", str),
+        "parametro_zipf": ("TRAFFIC_ZIPF_ALPHA", float),
+    }
+    for campo, (variable, convertir) in overrides.items():
+        if variable in os.environ:
+            config[campo] = convertir(os.environ[variable])
+
+    return config
 
 def iniciar_trafico():
     np.random.seed(42)

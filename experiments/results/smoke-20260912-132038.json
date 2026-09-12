@@ -1,0 +1,65 @@
+{
+  "name": "smoke",
+  "created_at": "2026-09-12T16:20:38.761386+00:00",
+  "configuration": {
+    "name": "smoke",
+    "traffic": {
+      "distribution": "zipf",
+      "request_count": 2,
+      "arrival_seconds": 0.1,
+      "zipf_alpha": 1.5
+    },
+    "cache": {
+      "maxmemory": "2mb",
+      "eviction_policy": "allkeys-lru",
+      "ttl_seconds": 60
+    }
+  },
+  "metrics": {
+    "total_requests": 2,
+    "successful_requests": 2,
+    "hits": 0,
+    "misses": 2,
+    "errors": 0,
+    "hit_rate": 0.0,
+    "miss_rate": 1.0,
+    "error_rate": 0.0,
+    "throughput_rps": 0.04,
+    "latency_ms": {
+      "average": 23108.493,
+      "p50": 11868.052,
+      "p95": 34348.933
+    },
+    "scraper_latency_ms": {
+      "average": 23107.79,
+      "p50": 11867.473,
+      "p95": 34348.108
+    },
+    "evictions": 0,
+    "eviction_rate_per_min": 0.0,
+    "cache_efficiency_ms": 0.0,
+    "elapsed_seconds": 50.023
+  },
+  "events": [
+    {
+      "query_type": "Q3",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 34348.933,
+      "scraper_latency_ms": 34348.108,
+      "error": null,
+      "evictions": 0,
+      "recorded_at": "2026-09-12T16:20:26.573639+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 11868.052,
+      "scraper_latency_ms": 11867.473,
+      "error": null,
+      "evictions": 0,
+      "recorded_at": "2026-09-12T16:20:38.547563+00:00"
+    }
+  ]
+}

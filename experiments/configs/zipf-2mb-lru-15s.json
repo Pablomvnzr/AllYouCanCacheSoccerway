@@ -1,0 +1,14 @@
+{
+  "name": "zipf-2mb-lru-15s",
+  "traffic": {
+    "distribution": "zipf",
+    "request_count": 40,
+    "arrival_seconds": 0.2,
+    "zipf_alpha": 1.5
+  },
+  "cache": {
+    "maxmemory": "2mb",
+    "eviction_policy": "allkeys-lru",
+    "ttl_seconds": 15
+  }
+}
