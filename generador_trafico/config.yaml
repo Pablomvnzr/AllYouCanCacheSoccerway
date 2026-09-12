@@ -1,0 +1,4 @@
+cantidad_solicitudes: 20
+tasa_arribo_segundos: 0.5
+distribucion: "zipf"
+parametro_zipf: 1.5
