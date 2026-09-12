@@ -21,6 +21,7 @@ Puertos disponibles en el host:
 
 - Scraper: `http://localhost:8000/health`
 - Caché: `http://localhost:5001/health`
+- Métricas: `http://localhost:9000/health`
 
 El generador ejecuta la cantidad de solicitudes configurada en `generador_trafico/config.yaml` y luego termina. Redis, la caché y el scraper siguen activos. Para detener todo:
 
@@ -61,3 +62,17 @@ curl -X POST http://localhost:5001/api/consultas \
 ```
 
 La primera solicitud devuelve `"status": "miss"`; una segunda solicitud idéntica dentro del TTL devuelve `"status": "hit"` y no vuelve a llamar al scraper.
+
+## Métricas
+
+La caché registra un evento por cada consulta, sin interrumpir el flujo si el servicio de métricas no está disponible. Al finalizar una corrida, consulta el resumen en:
+
+```bash
+curl http://localhost:9000/metrics
+```
+
+El resultado incluye hit/miss rate, throughput, latencia promedio/p50/p95, tiempo de scraping, errores, evictions y eficiencia de caché. Antes de cada experimento, reinicia la medición con:
+
+```bash
+curl -X POST http://localhost:9000/reset
+```
