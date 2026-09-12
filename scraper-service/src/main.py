@@ -16,7 +16,8 @@ from src.parsers import (
 app = FastAPI(title="Scraper Service")
 
 URL_TABLA_POSICIONES = "https://cl.soccerway.com/chile/liga-de-primera/tabla-de-posiciones/"
-URL_LIGA = "https://cl.soccerway.com/chile/liga-de-primera/"
+URL_PARTIDOS = "https://cl.soccerway.com/chile/liga-de-primera/partidos/"
+URL_RESULTADOS = "https://cl.soccerway.com/chile/liga-de-primera/resultados/"
 
 
 def aceptar_cookies(page):
@@ -140,7 +141,17 @@ def partidos_por_fecha(fecha_inicio: str, fecha_fin: str):
     Consulta Q4: partidos de la liga en un rango de fechas.
     fecha_inicio y fecha_fin en formato DD.MM (ej: '05.09' y '14.09').
     """
-    html = obtener_html_renderizado(URL_LIGA)
-    todos = parse_partidos_liga(html)
+    # La página principal sólo muestra una vista resumida. Para Q4 se usan las
+    # páginas dedicadas de partidos programados y resultados finalizados.
+    todos = []
+    urls_vistas = set()
+    for url in (URL_PARTIDOS, URL_RESULTADOS):
+        for partido in parse_partidos_liga(obtener_html_renderizado(url)):
+            llave = partido["url_partido"] or (
+                partido["fecha"], partido["equipo_local"], partido["equipo_visitante"]
+            )
+            if llave not in urls_vistas:
+                urls_vistas.add(llave)
+                todos.append(partido)
     filtrados = filtrar_partidos_por_fecha(todos, fecha_inicio, fecha_fin)
     return {"periodo": f"{fecha_inicio} a {fecha_fin}", "partidos": filtrados}

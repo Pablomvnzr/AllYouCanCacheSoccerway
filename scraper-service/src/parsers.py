@@ -199,239 +199,62 @@ def parse_h2h(html: str, equipo_1: str, equipo_2: str) -> list[dict]:
     return enfrentamientos
 
 def parse_partidos_liga(html: str) -> list[dict]:
-    """
-    Consulta Q4: partidos de la liga agrupados por jornada.
-    Parsea la página principal de la Liga de Primera, que mezcla
-    resultados pasados y próximos partidos.
-    """
+    """Consulta Q4: parsea las filas de una página de partidos de liga."""
     soup = BeautifulSoup(html, "html.parser")
     partidos = []
-    jornada_actual = None
+    urls_vistas = set()
 
-    contenedor = soup.select_one("div.leagues--static")
-    if contenedor is None:
-        return partidos
+    for fila in soup.select("div[id^='g_1_']"):
+        local_span = fila.select_one("div.event__homeParticipant span.wcl-name_jjfMf")
+        visitante_span = fila.select_one("div.event__awayParticipant span.wcl-name_jjfMf")
+        equipo_local = local_span.get_text(strip=True) if local_span else None
+        equipo_visitante = visitante_span.get_text(strip=True) if visitante_span else None
+        if not equipo_local or not equipo_visitante:
+            continue
 
-    for elemento in contenedor.find_all(recursive=True):
-        # Detecta separador de jornada
-        if elemento.name == "div" and "event__round" in elemento.get("class", []):
-            jornada_actual = elemento.get_text(strip=True)
+        link = fila.select_one("a.eventRowLink")
+        url_partido = link.get("href") if link else None
+        if url_partido and url_partido in urls_vistas:
+            continue
+        if url_partido:
+            urls_vistas.add(url_partido)
 
-        # Detecta fila de partido
-        if elemento.name == "div" and elemento.get("id", "").startswith("g_1_"):
-            fecha_span = elemento.select_one("span.wcl-dateContent_eEChT")
-            fecha = fecha_span.get_text(strip=True) if fecha_span else None
+        fecha_span = fila.select_one("span.event__stageTime, span.wcl-dateContent_eEChT")
+        fecha = fecha_span.get_text(" ", strip=True) if fecha_span else None
+        score_local = fila.select_one("span.event__score--home")
+        score_visitante = fila.select_one("span.event__score--away")
+        marcador_local = score_local.get_text(strip=True) if score_local else None
+        marcador_visitante = score_visitante.get_text(strip=True) if score_visitante else None
 
-            local_span = elemento.select_one("div.event__homeParticipant span.wcl-name_jjfMf")
-            visitante_span = elemento.select_one("div.event__awayParticipant span.wcl-name_jjfMf")
-            equipo_local = local_span.get_text(strip=True) if local_span else None
-            equipo_visitante = visitante_span.get_text(strip=True) if visitante_span else None
-
-            score_local = elemento.select_one("span.event__score--home")
-            score_visitante = elemento.select_one("span.event__score--away")
-            marcador_local = score_local.get_text(strip=True) if score_local else None
-            marcador_visitante = score_visitante.get_text(strip=True) if score_visitante else None
-
-            link = elemento.select_one("a.eventRowLink")
-            url_partido = link["href"] if link and link.get("href") else None
-
-            partidos.append({
-                "jornada": jornada_actual,
-                "fecha": fecha,
-                "equipo_local": equipo_local,
-                "equipo_visitante": equipo_visitante,
-                "goles_local": marcador_local if marcador_local != "-" else None,
-                "goles_visitante": marcador_visitante if marcador_visitante != "-" else None,
-                "url_partido": url_partido,
-            })
+        partidos.append({
+            "jornada": None,
+            "fecha": fecha,
+            "equipo_local": equipo_local,
+            "equipo_visitante": equipo_visitante,
+            "goles_local": marcador_local if marcador_local not in (None, "-") else None,
+            "goles_visitante": marcador_visitante if marcador_visitante not in (None, "-") else None,
+            "url_partido": url_partido,
+        })
 
     return partidos
 
 
 def filtrar_partidos_por_fecha(partidos: list[dict], fecha_inicio: str, fecha_fin: str) -> list[dict]:
-    """
-    Filtra partidos cuyo campo 'fecha' (formato 'DD.MM. HH:MM', sin año)
-    caiga dentro del rango [fecha_inicio, fecha_fin] en formato 'DD.MM'.
-    """
-    def extraer_dia_mes(fecha_str: str):
-        # "12.09. 12:30" -> (12, 9)
-        try:
-            partes = fecha_str.split(".")
-            dia = int(partes[0])
-            mes = int(partes[1])
-            return (mes, dia)
-        except (ValueError, IndexError):
+    """Filtra fechas ``DD.MM`` (el horario y el año son opcionales)."""
+    def extraer_dia_mes(fecha_str: str | None):
+        if not fecha_str:
             return None
+        coincidencia = re.search(r"(\d{1,2})\.(\d{1,2})", fecha_str)
+        if not coincidencia:
+            return None
+        return int(coincidencia.group(2)), int(coincidencia.group(1))
 
     inicio = extraer_dia_mes(fecha_inicio)
     fin = extraer_dia_mes(fecha_fin)
+    if inicio is None or fin is None or inicio > fin:
+        return []
 
-    if inicio is None or fin is None:
-        return partidos
-
-    resultado = []
-    for p in partidos:
-        if not p["fecha"]:
-            continue
-        clave = extraer_dia_mes(p["fecha"])
-        if clave and inicio <= clave <= fin:
-            resultado.append(p)
-
-    return resultado
-
-def parse_partidos_liga(html: str) -> list[dict]:
-    """
-    Consulta Q4: partidos de la liga agrupados por jornada.
-    Parsea la página principal de la Liga de Primera, que mezcla
-    resultados pasados y próximos partidos.
-    """
-    soup = BeautifulSoup(html, "html.parser")
-    partidos = []
-    jornada_actual = None
-
-    contenedor = soup.select_one("div.leagues--static")
-    if contenedor is None:
-        return partidos
-
-    for elemento in contenedor.find_all(recursive=True):
-        if elemento.name == "div" and "event__round" in elemento.get("class", []):
-            jornada_actual = elemento.get_text(strip=True)
-
-        if elemento.name == "div" and elemento.get("id", "").startswith("g_1_"):
-            fecha_span = elemento.select_one("span.wcl-dateContent_eEChT")
-            fecha = fecha_span.get_text(strip=True) if fecha_span else None
-
-            local_span = elemento.select_one("div.event__homeParticipant span.wcl-name_jjfMf")
-            visitante_span = elemento.select_one("div.event__awayParticipant span.wcl-name_jjfMf")
-            equipo_local = local_span.get_text(strip=True) if local_span else None
-            equipo_visitante = visitante_span.get_text(strip=True) if visitante_span else None
-
-            score_local = elemento.select_one("span.event__score--home")
-            score_visitante = elemento.select_one("span.event__score--away")
-            marcador_local = score_local.get_text(strip=True) if score_local else None
-            marcador_visitante = score_visitante.get_text(strip=True) if score_visitante else None
-
-            link = elemento.select_one("a.eventRowLink")
-            url_partido = link["href"] if link and link.get("href") else None
-
-            partidos.append({
-                "jornada": jornada_actual,
-                "fecha": fecha,
-                "equipo_local": equipo_local,
-                "equipo_visitante": equipo_visitante,
-                "goles_local": marcador_local if marcador_local != "-" else None,
-                "goles_visitante": marcador_visitante if marcador_visitante != "-" else None,
-                "url_partido": url_partido,
-            })
-
-    return partidos
-
-
-def filtrar_partidos_por_fecha(partidos: list[dict], fecha_inicio: str, fecha_fin: str) -> list[dict]:
-    """
-    Filtra partidos cuyo campo 'fecha' (formato 'DD.MM. HH:MM', sin año)
-    caiga dentro del rango [fecha_inicio, fecha_fin] en formato 'DD.MM'.
-    """
-    def extraer_dia_mes(fecha_str: str):
-        try:
-            partes = fecha_str.split(".")
-            dia = int(partes[0])
-            mes = int(partes[1])
-            return (mes, dia)
-        except (ValueError, IndexError):
-            return None
-
-    inicio = extraer_dia_mes(fecha_inicio)
-    fin = extraer_dia_mes(fecha_fin)
-
-    if inicio is None or fin is None:
-        return partidos
-
-    resultado = []
-    for p in partidos:
-        if not p["fecha"]:
-            continue
-        clave = extraer_dia_mes(p["fecha"])
-        if clave and inicio <= clave <= fin:
-            resultado.append(p)
-
-    return resultado
-
-
-def parse_partidos_liga(html: str) -> list[dict]:
-    """
-    Consulta Q4: partidos de la liga agrupados por jornada.
-    Parsea la página principal de la Liga de Primera, que mezcla
-    resultados pasados y próximos partidos.
-    """
-    soup = BeautifulSoup(html, "html.parser")
-    partidos = []
-    jornada_actual = None
-
-    contenedor = soup.select_one("div.leagues--static")
-    if contenedor is None:
-        return partidos
-
-    for elemento in contenedor.find_all(recursive=True):
-        if elemento.name == "div" and "event__round" in elemento.get("class", []):
-            jornada_actual = elemento.get_text(strip=True)
-
-        if elemento.name == "div" and elemento.get("id", "").startswith("g_1_"):
-            fecha_span = elemento.select_one("span.wcl-dateContent_eEChT")
-            fecha = fecha_span.get_text(strip=True) if fecha_span else None
-
-            local_span = elemento.select_one("div.event__homeParticipant span.wcl-name_jjfMf")
-            visitante_span = elemento.select_one("div.event__awayParticipant span.wcl-name_jjfMf")
-            equipo_local = local_span.get_text(strip=True) if local_span else None
-            equipo_visitante = visitante_span.get_text(strip=True) if visitante_span else None
-
-            score_local = elemento.select_one("span.event__score--home")
-            score_visitante = elemento.select_one("span.event__score--away")
-            marcador_local = score_local.get_text(strip=True) if score_local else None
-            marcador_visitante = score_visitante.get_text(strip=True) if score_visitante else None
-
-            link = elemento.select_one("a.eventRowLink")
-            url_partido = link["href"] if link and link.get("href") else None
-
-            partidos.append({
-                "jornada": jornada_actual,
-                "fecha": fecha,
-                "equipo_local": equipo_local,
-                "equipo_visitante": equipo_visitante,
-                "goles_local": marcador_local if marcador_local != "-" else None,
-                "goles_visitante": marcador_visitante if marcador_visitante != "-" else None,
-                "url_partido": url_partido,
-            })
-
-    return partidos
-
-
-def filtrar_partidos_por_fecha(partidos: list[dict], fecha_inicio: str, fecha_fin: str) -> list[dict]:
-    """
-    Filtra partidos cuyo campo 'fecha' (formato 'DD.MM. HH:MM', sin año)
-    caiga dentro del rango [fecha_inicio, fecha_fin] en formato 'DD.MM'.
-    """
-    def extraer_dia_mes(fecha_str: str):
-        try:
-            partes = fecha_str.split(".")
-            dia = int(partes[0])
-            mes = int(partes[1])
-            return (mes, dia)
-        except (ValueError, IndexError):
-            return None
-
-    inicio = extraer_dia_mes(fecha_inicio)
-    fin = extraer_dia_mes(fecha_fin)
-
-    if inicio is None or fin is None:
-        return partidos
-
-    resultado = []
-    for p in partidos:
-        if not p["fecha"]:
-            continue
-        clave = extraer_dia_mes(p["fecha"])
-        if clave and inicio <= clave <= fin:
-            resultado.append(p)
-
-    return resultado
+    return [
+        partido for partido in partidos
+        if (fecha := extraer_dia_mes(partido.get("fecha"))) and inicio <= fecha <= fin
+    ]
