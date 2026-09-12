@@ -1,7 +1,13 @@
 import redis
 import json
+import os
 
-redis_client = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
+redis_client = redis.Redis(
+    host=os.getenv("REDIS_HOST", "localhost"),
+    port=int(os.getenv("REDIS_PORT", "6379")),
+    db=0,
+    decode_responses=True,
+)
 
 def obtener_de_cache(llave):
     """Se busca una llave en Redis, si existe la llave se produche un cache hit."""
@@ -17,3 +23,8 @@ def guardar_en_cache(llave, datos, ttl_segundos=30):
     valor_json = json.dumps(datos)
 
     redis_client.setex(llave, ttl_segundos, valor_json)
+
+
+def cache_disponible():
+    """Comprueba la conexión a Redis para el health check del servicio."""
+    return bool(redis_client.ping())

@@ -1,5 +1,6 @@
 import time
 import random
+import os
 import numpy as np
 import yaml
 import requests
@@ -20,7 +21,7 @@ def iniciar_trafico():
     dist = config["distribucion"]
     alpha = config["parametro_zipf"]
 
-    URL_CACHE = "http://localhost:5000/api/consultas"
+    URL_CACHE = os.getenv("CACHE_URL", "http://localhost:5000/api/consultas")
 
     print("=========================================")
     print(f"Iniciando Generador de Tráfico (Modular)")
@@ -35,8 +36,10 @@ def iniciar_trafico():
         print(f"[{i+1}/{total}] Enviando {payload['tipo']}: {payload}")
 
         try:
-            response = requests.post(URL_CACHE, json=payload, timeout=2)
-            print(f"  -> Éxito: Caché respondió con status {response.status_code}")
+            response = requests.post(URL_CACHE, json=payload, timeout=60)
+            response.raise_for_status()
+            resultado = response.json()
+            print(f"  -> {resultado['status'].upper()}: respuesta desde {resultado['origen']}")
         except requests.exceptions.RequestException as e:
             print(f"  -> Error: La caché no está disponible en {URL_CACHE}")
 
