@@ -1,0 +1,6 @@
+{
+  "name": "pressure-zipf-5mb-lru",
+  "traffic": {"distribution": "zipf", "request_count": 1000, "arrival_seconds": 0, "zipf_alpha": 1.1},
+  "cache": {"maxmemory": "5mb", "eviction_policy": "allkeys-lru", "ttl_seconds": 3600},
+  "benchmark": {"key_space": 1000, "value_bytes": 32768}
+}

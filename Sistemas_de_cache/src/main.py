@@ -90,6 +90,18 @@ def consultar_scraper(payload: dict) -> dict:
         ) from error
 
 
+def respuesta_benchmark(payload: dict) -> dict:
+    """Crea un valor determinista para las pruebas explícitas de presión."""
+    size = int(payload["benchmark_value_bytes"])
+    if size < 1 or size > 1_000_000:
+        raise ValueError("benchmark_value_bytes debe estar entre 1 y 1000000")
+    return {
+        "benchmark": True,
+        "benchmark_id": payload["benchmark_id"],
+        "payload": "x" * size,
+    }
+
+
 @app.get("/health")
 def health_check():
     try:
@@ -133,10 +145,15 @@ async def manejar_consulta(request: Request):
         return {"status": estado_cache, "origen": "cache", "datos": respuesta_cache}
 
     estado_cache = "miss"
-    print(f"[MISS] La llave '{llave}' no existe. Consultando el Scraper...")
+    es_benchmark = "benchmark_id" in payload and "benchmark_value_bytes" in payload
+    origen = "benchmark" if es_benchmark else "scraper"
+    print(f"[MISS] La llave '{llave}' no existe. Consultando {origen}...")
     inicio_scraper = perf_counter()
     try:
-        datos = consultar_scraper(payload)
+        if es_benchmark:
+            datos = respuesta_benchmark(payload)
+        else:
+            datos = consultar_scraper(payload)
         latencia_scraper_ms = (perf_counter() - inicio_scraper) * 1000
         guardar_en_cache(llave, datos, ttl_segundos=CACHE_TTL_SECONDS)
     except HTTPException as error:
@@ -167,4 +184,4 @@ async def manejar_consulta(request: Request):
         latencia_ms=(perf_counter() - inicio) * 1000,
         latencia_scraper_ms=latencia_scraper_ms,
     )
-    return {"status": estado_cache, "origen": "scraper", "datos": datos}
+    return {"status": estado_cache, "origen": origen, "datos": datos}

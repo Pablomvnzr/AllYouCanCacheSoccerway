@@ -64,6 +64,10 @@ def build_environment(config: dict) -> dict[str, str]:
     fixed_payload = traffic.get("fixed_payload")
     if fixed_payload is not None:
         environment["TRAFFIC_FIXED_PAYLOAD"] = json.dumps(fixed_payload)
+    benchmark = config.get("benchmark")
+    if benchmark is not None:
+        environment["TRAFFIC_BENCHMARK_KEY_SPACE"] = str(benchmark["key_space"])
+        environment["TRAFFIC_BENCHMARK_VALUE_BYTES"] = str(benchmark["value_bytes"])
     return environment
 
 
@@ -82,6 +86,13 @@ def validate_config(config: dict):
     if fixed_payload is not None:
         if not isinstance(fixed_payload, dict) or fixed_payload.get("tipo") not in {"Q1", "Q2", "Q3", "Q4", "Q5"}:
             raise ValueError("traffic.fixed_payload debe ser un payload válido de Q1 a Q5")
+    benchmark = config.get("benchmark")
+    if benchmark is not None:
+        if not isinstance(benchmark, dict):
+            raise ValueError("benchmark debe ser un objeto")
+        for key in ("key_space", "value_bytes"):
+            if not isinstance(benchmark.get(key), int) or benchmark[key] < 1:
+                raise ValueError(f"benchmark.{key} debe ser un entero positivo")
     if config["cache"]["eviction_policy"] not in {"allkeys-lru", "allkeys-lfu"}:
         raise ValueError("Use allkeys-lru o allkeys-lfu como eviction_policy")
 
