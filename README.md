@@ -2,6 +2,8 @@
 
 Primera integración de la tarea: el generador de tráfico envía consultas sintéticas a la caché; ante un *miss*, la caché consulta al scraper de Soccerway y guarda la respuesta en Redis con TTL.
 
+Repositorio espejo personal de desarrollo: [AllYouCanCacheSoccerway en GitHub](https://github.com/Pablomvnzr/AllYouCanCacheSoccerway).
+
 ## Servicios
 
 - `traffic-generator`: genera consultas Q1-Q5 con distribución uniforme o Zipf.
