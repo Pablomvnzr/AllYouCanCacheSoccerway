@@ -1,0 +1,68 @@
+{
+  "name": "ttl-q5-3s",
+  "created_at": "2026-09-12T17:33:15.420651+00:00",
+  "configuration": {
+    "name": "ttl-q5-3s",
+    "traffic": {
+      "distribution": "uniforme",
+      "request_count": 2,
+      "arrival_seconds": 4,
+      "zipf_alpha": 1.5,
+      "fixed_payload": {
+        "tipo": "Q5"
+      }
+    },
+    "cache": {
+      "maxmemory": "5mb",
+      "eviction_policy": "allkeys-lru",
+      "ttl_seconds": 3
+    }
+  },
+  "metrics": {
+    "total_requests": 2,
+    "successful_requests": 2,
+    "hits": 0,
+    "misses": 2,
+    "errors": 0,
+    "hit_rate": 0.0,
+    "miss_rate": 1.0,
+    "error_rate": 0.0,
+    "throughput_rps": 0.061,
+    "latency_ms": {
+      "average": 10629.123,
+      "p50": 9566.205,
+      "p95": 11692.04
+    },
+    "scraper_latency_ms": {
+      "average": 10628.414,
+      "p50": 9565.708,
+      "p95": 11691.121
+    },
+    "evictions": 0,
+    "eviction_rate_per_min": 0.0,
+    "cache_efficiency_ms": 0.0,
+    "elapsed_seconds": 32.808
+  },
+  "events": [
+    {
+      "query_type": "Q5",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 9566.205,
+      "scraper_latency_ms": 9565.708,
+      "error": null,
+      "evictions": 0,
+      "recorded_at": "2026-09-12T17:32:55.598061+00:00"
+    },
+    {
+      "query_type": "Q5",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 11692.04,
+      "scraper_latency_ms": 11691.121,
+      "error": null,
+      "evictions": 0,
+      "recorded_at": "2026-09-12T17:33:11.299729+00:00"
+    }
+  ]
+}

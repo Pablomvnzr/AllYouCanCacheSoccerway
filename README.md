@@ -88,4 +88,6 @@ python3 experiments/run_experiment.py experiments/configs/uniform-2mb-lru.json
 python3 experiments/run_experiment.py experiments/configs/zipf-2mb-lru.json
 ```
 
-Las configuraciones incluidas permiten iniciar la comparación Uniforme vs Zipf, tamaños de 2/5/10 MB, LRU vs LFU y TTL de 15/60 segundos. Ajusta `request_count` antes de las corridas finales para obtener muestras suficientes.
+Las configuraciones incluidas permiten iniciar la comparación Uniforme vs Zipf, tamaños de 2/5/10 MB, LRU vs LFU y TTL de 3/60 segundos. Ajusta `request_count` antes de las corridas finales para obtener muestras suficientes.
+
+Para evaluar TTL de forma determinista, las configuraciones `ttl-*-3s.json` y `ttl-*-60s.json` repiten dos veces el mismo payload Q1-Q5. Las de 3 segundos esperan 4 segundos entre solicitudes, por lo que deben producir `miss -> miss` después de expirar; las de 60 segundos deben conservar la respuesta y producir `miss -> hit`. Ejecuta cada par y compara sus archivos JSON.

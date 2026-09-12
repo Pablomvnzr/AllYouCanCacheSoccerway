@@ -61,6 +61,9 @@ def build_environment(config: dict) -> dict[str, str]:
             "TRAFFIC_ZIPF_ALPHA": str(traffic["zipf_alpha"]),
         }
     )
+    fixed_payload = traffic.get("fixed_payload")
+    if fixed_payload is not None:
+        environment["TRAFFIC_FIXED_PAYLOAD"] = json.dumps(fixed_payload)
     return environment
 
 
@@ -75,6 +78,10 @@ def validate_config(config: dict):
             raise ValueError(f"Faltan claves en {section}: {', '.join(sorted(missing))}")
     if config["traffic"]["distribution"] not in {"uniforme", "zipf"}:
         raise ValueError("traffic.distribution debe ser 'uniforme' o 'zipf'")
+    fixed_payload = config["traffic"].get("fixed_payload")
+    if fixed_payload is not None:
+        if not isinstance(fixed_payload, dict) or fixed_payload.get("tipo") not in {"Q1", "Q2", "Q3", "Q4", "Q5"}:
+            raise ValueError("traffic.fixed_payload debe ser un payload válido de Q1 a Q5")
     if config["cache"]["eviction_policy"] not in {"allkeys-lru", "allkeys-lfu"}:
         raise ValueError("Use allkeys-lru o allkeys-lfu como eviction_policy")
 

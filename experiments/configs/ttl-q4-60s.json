@@ -1,0 +1,5 @@
+{
+  "name": "ttl-q4-60s",
+  "traffic": {"distribution": "uniforme", "request_count": 2, "arrival_seconds": 4, "zipf_alpha": 1.5, "fixed_payload": {"tipo": "Q4", "fecha_inicio": "04.09", "fecha_fin": "07.09"}},
+  "cache": {"maxmemory": "5mb", "eviction_policy": "allkeys-lru", "ttl_seconds": 60}
+}

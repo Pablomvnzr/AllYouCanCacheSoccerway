@@ -1,6 +1,7 @@
 import time
 import random
 import os
+import json
 import numpy as np
 import yaml
 import requests
@@ -36,6 +37,8 @@ def iniciar_trafico():
     alpha = config["parametro_zipf"]
 
     URL_CACHE = os.getenv("CACHE_URL", "http://localhost:5000/api/consultas")
+    fixed_payload_raw = os.getenv("TRAFFIC_FIXED_PAYLOAD", "")
+    fixed_payload = json.loads(fixed_payload_raw) if fixed_payload_raw else None
 
     print("=========================================")
     print(f"Iniciando Generador de Tráfico (Modular)")
@@ -44,8 +47,11 @@ def iniciar_trafico():
     print("=========================================\n")
 
     for i in range(total):
-        idx = get_distribucion_index(dist, len(TIPOS_CONSULTA), alpha)
-        payload = armar_payload(idx)
+        if fixed_payload is not None:
+            payload = dict(fixed_payload)
+        else:
+            idx = get_distribucion_index(dist, len(TIPOS_CONSULTA), alpha)
+            payload = armar_payload(idx)
 
         print(f"[{i+1}/{total}] Enviando {payload['tipo']}: {payload}")
 

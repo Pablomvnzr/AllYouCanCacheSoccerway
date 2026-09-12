@@ -1,0 +1,5 @@
+{
+  "name": "ttl-q3-3s",
+  "traffic": {"distribution": "uniforme", "request_count": 2, "arrival_seconds": 4, "zipf_alpha": 1.5, "fixed_payload": {"tipo": "Q3", "slug1": "colo-colo", "id1": "th4HPIws", "slug2": "u-de-chile", "id2": "xW771C6U"}},
+  "cache": {"maxmemory": "5mb", "eviction_policy": "allkeys-lru", "ttl_seconds": 3}
+}
