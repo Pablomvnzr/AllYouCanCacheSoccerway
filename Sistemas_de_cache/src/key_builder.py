@@ -14,6 +14,6 @@ def generar_llave(payload):
         llave += f":{payload.get('fecha_inicio')}:{payload.get('fecha_fin')}"
 
     if "benchmark_id" in payload:
-        llave += f":benchmark:{payload['benchmark_id']}"
+        llave = f"benchmark:{payload['benchmark_value_bytes']}:{llave}:{payload['benchmark_id']}"
 
     return llave.replace(" ", "_")

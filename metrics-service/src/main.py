@@ -17,6 +17,8 @@ class MetricEvent(BaseModel):
     scraper_latency_ms: float | None = Field(default=None, ge=0)
     error: str | None = None
     evictions: int = Field(default=0, ge=0)
+    expired_keys: int = Field(default=0, ge=0)
+    source_origin: Literal['scraper', 'benchmark', 'cache', 'error'] = 'scraper'
 
 
 @app.get("/health")
@@ -36,8 +38,8 @@ def get_metrics():
 
 
 @app.get("/events")
-def get_events(limit: int = Query(default=100, ge=1, le=1000)):
-    return {"events": store.recent(limit)}
+def get_events(limit: int = Query(default=100, ge=1, le=1000), offset: int = Query(default=0, ge=0)):
+    return store.page(offset, limit)
 
 
 @app.post("/reset")
