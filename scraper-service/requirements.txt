@@ -1,5 +1,5 @@
-fastapi
-uvicorn[standard]
-requests
-beautifulsoup4
-playwright
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+requests==2.34.2
+beautifulsoup4==4.15.0
+playwright==1.62.0

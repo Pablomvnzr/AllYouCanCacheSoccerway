@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import re
+from datetime import date, datetime
 
 
 def parse_tabla_posiciones(html: str) -> list[dict]:
@@ -119,6 +120,7 @@ def _parse_seccion_partidos(soup: BeautifulSoup, titulo_seccion: str, solo_liga_
 
             partidos.append({
                 "fecha": fecha,
+                "hora": (match.group(0) if fecha and (match := re.search(r'\b\d{1,2}:\d{2}\b', fecha)) else None),
                 "competicion": competicion_actual,
                 "equipo_local": equipo_local,
                 "equipo_visitante": equipo_visitante,
@@ -229,6 +231,7 @@ def parse_partidos_liga(html: str) -> list[dict]:
         partidos.append({
             "jornada": None,
             "fecha": fecha,
+            "hora": (match.group(0) if fecha and (match := re.search(r'\b\d{1,2}:\d{2}\b', fecha)) else None),
             "equipo_local": equipo_local,
             "equipo_visitante": equipo_visitante,
             "goles_local": marcador_local if marcador_local not in (None, "-") else None,
@@ -239,22 +242,30 @@ def parse_partidos_liga(html: str) -> list[dict]:
     return partidos
 
 
-def filtrar_partidos_por_fecha(partidos: list[dict], fecha_inicio: str, fecha_fin: str) -> list[dict]:
-    """Filtra fechas ``DD.MM`` (el horario y el año son opcionales)."""
-    def extraer_dia_mes(fecha_str: str | None):
-        if not fecha_str:
-            return None
-        coincidencia = re.search(r"(\d{1,2})\.(\d{1,2})", fecha_str)
-        if not coincidencia:
-            return None
-        return int(coincidencia.group(2)), int(coincidencia.group(1))
-
-    inicio = extraer_dia_mes(fecha_inicio)
-    fin = extraer_dia_mes(fecha_fin)
-    if inicio is None or fin is None or inicio > fin:
-        return []
-
-    return [
-        partido for partido in partidos
-        if (fecha := extraer_dia_mes(partido.get("fecha"))) and inicio <= fecha <= fin
-    ]
+def filtrar_partidos_por_fecha(partidos: list[dict], fecha_inicio: str, fecha_fin: str, reference_year: int | None = None) -> list[dict]:
+    """DD.MM usa el año actual; fechas completas permiten distinguir temporadas."""
+    def parse(value, year):
+        iso = re.search(r'\b(\d{4}-\d{2}-\d{2})\b', value or '')
+        if iso:
+            return date.fromisoformat(iso.group(1)), True
+        match = re.search(r'(\d{1,2})\.(\d{1,2})(?:\.(\d{4}))?', value or '')
+        if not match:
+            raise ValueError(f'Fecha ilegible: {value}')
+        day, month, explicit_year = match.groups()
+        return date(int(explicit_year or year), int(month), int(day)), bool(explicit_year)
+    reference_year = reference_year or date.today().year
+    start, _ = parse(fecha_inicio, reference_year)
+    end, explicit_end = parse(fecha_fin, start.year)
+    if end < start and not explicit_end:
+        end = end.replace(year=start.year+1)
+    if end < start:
+        raise ValueError('El fin debe ser posterior al inicio')
+    result = []
+    for match in partidos:
+        try:
+            when, explicit = parse(match.get('fecha'), reference_year)
+            if start <= when <= end:
+                result.append(match)
+        except (ValueError, TypeError):
+            continue
+    return result
