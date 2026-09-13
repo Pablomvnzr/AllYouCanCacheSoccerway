@@ -63,6 +63,7 @@ def iniciar_trafico():
     while not stopped and (total == 0 or counters["attempted"] < total):
         payload = dict(fixed) if fixed else dict(catalog[get_distribucion_index(c["distribucion"], len(catalog), c["parametro_zipf"], rng)])
         event = dict(payload=payload, success=False)
+        print(f"[{counters['attempted'] + 1}/{total or 'continuo'}] Enviando {payload['tipo']}: {payload}", flush=True)
         start = time.perf_counter()
         try:
             response = requests.post(os.getenv("CACHE_URL", "http://localhost:5000/api/consultas"), json=payload, timeout=180)
@@ -71,16 +72,16 @@ def iniciar_trafico():
             if result.get("status") not in ("hit", "miss") or not isinstance(result.get("datos"), dict) or result["datos"].get("error"):
                 raise ValueError("Respuesta inválida")
             event.update(success=True, cache_status=result["status"], origin=result["origen"])
+            print(f" -> {result['status'].upper()}: respuesta desde {result['origen']}", flush=True)
             # Evidencia funcional acotada: primera respuesta válida de cada tipo.
             samples.setdefault(payload["tipo"], dict(query=payload, data=result["datos"]))
         except (requests.RequestException, ValueError, KeyError) as error:
             event["error"] = str(error)
+            print(f" -> ERROR: {error}", flush=True)
         event["latency_ms"] = (time.perf_counter() - start) * 1000
         counters["attempted"] += 1
         counters["successful" if event["success"] else "errors"] += 1
         records.append(event)
-        if counters["attempted"] % 100 == 0 or (total and counters["attempted"] == total):
-            print(f"Solicitudes: {counters['attempted']}/{total or 'continuo'}; errores: {counters['errors']}", flush=True)
         if total and counters["attempted"] == total:
             break
         pause = arrival_delay(c.get("arrival_distribution", "constant"), delay, arrivals, c["parametro_zipf"])

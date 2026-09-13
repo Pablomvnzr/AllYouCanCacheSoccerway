@@ -198,6 +198,7 @@ def run(config_path: Path, keep_running: bool, no_build: bool = False):
                           all_requests_successful=all_successful)
 
         result = {
+            "metrics": metrics,
             'schema_version': 2,
             'workload_kind': 'synthetic_cache_pressure' if config.get('benchmark') else 'preloaded_soccerway' if config.get('source_mode') == 'preloaded' else 'live_soccerway',
             'code_revision': revision.stdout.strip(),
@@ -214,7 +215,6 @@ def run(config_path: Path, keep_running: bool, no_build: bool = False):
             "name": name,
             "created_at": datetime.now(timezone.utc).isoformat(),
             "configuration": config,
-            "metrics": metrics,
             "events": exported,
         }
         RESULTS_DIR.mkdir(parents=True, exist_ok=True)
