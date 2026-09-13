@@ -1,0 +1,1342 @@
+{
+  "schema_version": 2,
+  "workload_kind": "live_soccerway",
+  "code_revision": "20a11bb7d6610975ab8522d8f30fa4bc272aa144",
+  "code_dirty": true,
+  "config_sha256": "5f61eb8a11a742e779f03f173add21ff9c08544e4833f7b8aa4f122bcdeffdce",
+  "source_sha256": {
+    "generador_trafico/src/distributions.py": "90b697d6b2bf670837933da59ac6ff04644b904758bd87fd46dc16bab70ad413",
+    "generador_trafico/src/main.py": "462274b71b9a89890d2f67f53c902871b5c2db9fc9f1e3795a5d6e4a111b475a",
+    "generador_trafico/src/query_builder.py": "0b2003779a8f242362afd86f81c9b51d0845704165af3467853aba195f159535",
+    "Sistemas_de_cache/src/cache_manager.py": "63e52d039e17b2f8ded7230d3443ba398ace52b119b86522f0224a26464313c7",
+    "Sistemas_de_cache/src/key_builder.py": "b6b48194834006cc7370587174658dda3500806d28904f8fb1b64847a7b4b038",
+    "Sistemas_de_cache/src/main.py": "93757cc8ba81d0fb4e9595c3bb64d1c04f636414d23f1805ba3c979bffa74cf8",
+    "scraper-service/src/__init__.py": "01d274cfa326e58a9332c33334b71109162752431cc6706adc51bb4dd507217d",
+    "scraper-service/src/main.py": "3a9e7894a7570338d65ff537747fd057bed48d4f9b16f36019db614f6f4a7480",
+    "scraper-service/src/parsers.py": "53d8717b29a99d181863fd82d1e15cec47f7f057615e0fc99ad0540173fb60cb",
+    "scraper-service/src/preload.py": "211da2e29f5838bf942c8af268231fdeb65e4b3aa561b28de7799e73f4aef0ab",
+    "scraper-service/src/test_parser.py": "2251ebf5fae57c081b94fd131b16f648ae9c5c8f107142694dbc67bb9aee7276",
+    "metrics-service/src/main.py": "cf5b4c0d4f6c0471d60d412f8c0ad129c15d4a8ca5ccc9879d2f4cc15d89df05",
+    "metrics-service/src/metrics_store.py": "2e1c31a63d25acbb04127a28c407aafc25e154163154ee9416c80bd76cce1136"
+  },
+  "client": {
+    "configuration": {
+      "cantidad_solicitudes": 40,
+      "tasa_arribo_segundos": 0.05,
+      "distribucion": "uniforme",
+      "parametro_zipf": 1.5,
+      "seed": 42,
+      "arrival_distribution": "uniforme",
+      "benchmark_key_space": 0,
+      "benchmark_value_bytes": 0
+    },
+    "counters": {
+      "attempted": 40,
+      "successful": 40,
+      "errors": 0
+    },
+    "stopped_by_user": false,
+    "elapsed_seconds": 103.08194177099904,
+    "arrival_mode": "closed-loop",
+    "events": [
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "huachipato",
+          "equipo_id": "SlhZpIaP"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3524.4609210003546
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "u-de-concepcion",
+          "equipo_id": "6BcMMext"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3108.2796579994465
+      },
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "limache",
+          "equipo_id": "YPTUuyqJ"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3187.59388899889
+      },
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "04.09",
+          "fecha_fin": "11.09"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 4875.386084000638
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "dep-concepcion",
+          "equipo_id": "GKJrZE7I"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3201.8367260006926
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "nublense",
+          "equipo_id": "vVvwgdNn"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3511.975135999819
+      },
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "huachipato",
+          "equipo_id": "SlhZpIaP"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 11.293257999568596
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "a-italiano",
+          "equipo_id": "rN3Jxc8g"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3368.524129000434
+      },
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "u-de-chile",
+          "equipo_id": "xW771C6U"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3248.0356020005274
+      },
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "everton",
+          "equipo_id": "Kr3LOxgm"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3310.9914050000953
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "u-la-calera",
+          "equipo_id": "M34g8ulJ"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3099.2519610008458
+      },
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "01.09",
+          "fecha_fin": "08.09"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 5963.697488999969
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "coquimbo",
+          "equipo_id": "hWejMZ6h"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3838.9079320004384
+      },
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "07.09",
+          "fecha_fin": "14.09"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 5052.263923998908
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "u-de-concepcion",
+          "equipo_id": "6BcMMext"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 11.593703000471578
+      },
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "16.09",
+          "fecha_fin": "23.09"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 5172.691903999294
+      },
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "19.09",
+          "fecha_fin": "26.09"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 5273.0229220014735
+      },
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "o-higgins",
+          "equipo_id": "hYrshGxg"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3522.983202999967
+      },
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "07.09",
+          "fecha_fin": "14.09"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 12.058575000992278
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "coquimbo",
+          "equipo_id": "hWejMZ6h"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 13.358793999941554
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "o-higgins",
+          "equipo_id": "hYrshGxg"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3525.876776999212
+      },
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "a-italiano",
+          "equipo_id": "rN3Jxc8g"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3409.884091999629
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "nublense",
+          "equipo_id": "vVvwgdNn"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 10.502200999326305
+      },
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "palestino",
+          "equipo_id": "U35cjf75"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3430.2233290000004
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "a-italiano",
+          "equipo_id": "rN3Jxc8g"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 9.661793999839574
+      },
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "03.09",
+          "fecha_fin": "10.09"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 5274.367527001232
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "huachipato",
+          "equipo_id": "SlhZpIaP"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3575.8171680008672
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "colo-colo",
+          "equipo_id": "th4HPIws"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3354.6219279996876
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "u-de-chile",
+          "equipo_id": "xW771C6U"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3426.0907060015597
+      },
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "u-catolica",
+          "equipo_id": "Qe432hiO"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 2957.83088799908
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "o-higgins",
+          "equipo_id": "hYrshGxg"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 10.845652999705635
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "nublense",
+          "equipo_id": "vVvwgdNn"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 8.666841000376735
+      },
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "17.09",
+          "fecha_fin": "24.09"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 5291.733492000276
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "u-la-calera",
+          "equipo_id": "M34g8ulJ"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 9.793156999876373
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "huachipato",
+          "equipo_id": "SlhZpIaP"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 9.624876000088989
+      },
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "03.09",
+          "fecha_fin": "10.09"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 11.639927000942407
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "limache",
+          "equipo_id": "YPTUuyqJ"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3586.7367569990165
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "huachipato",
+          "equipo_id": "SlhZpIaP"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 10.045146000265959
+      },
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "16.09",
+          "fecha_fin": "23.09"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 8.745998000449617
+      },
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "u-catolica",
+          "equipo_id": "Qe432hiO"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 9.114360000239685
+      }
+    ],
+    "events_truncated": false,
+    "response_samples": {
+      "Q2": {
+        "query": {
+          "tipo": "Q2",
+          "slug": "huachipato",
+          "equipo_id": "SlhZpIaP"
+        },
+        "data": {
+          "equipo": "huachipato",
+          "ultimos_partidos": [
+            {
+              "fecha": "06.09. 20:00",
+              "hora": "20:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Huachipato",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": "0",
+              "goles_visitante": "0",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/huachipato-SlhZpIaP/?mid=CY6QFilT"
+            },
+            {
+              "fecha": "22.08. 21:30",
+              "hora": "21:30",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Huachipato",
+              "equipo_visitante": "Limache",
+              "goles_local": "1",
+              "goles_visitante": "3",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/huachipato-SlhZpIaP/limache-YPTUuyqJ/?mid=EFhLeBu0"
+            },
+            {
+              "fecha": "18.08. 00:30",
+              "hora": "00:30",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Palestino",
+              "equipo_visitante": "Huachipato",
+              "goles_local": "5",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/huachipato-SlhZpIaP/palestino-U35cjf75/?mid=CAI3sLKk"
+            },
+            {
+              "fecha": "08.08. 19:00",
+              "hora": "19:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Huachipato",
+              "equipo_visitante": "Everton",
+              "goles_local": "1",
+              "goles_visitante": "4",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/everton-Kr3LOxgm/huachipato-SlhZpIaP/?mid=0drkxQrA"
+            },
+            {
+              "fecha": "02.08. 21:30",
+              "hora": "21:30",
+              "competicion": "Liga de Primera",
+              "equipo_local": "U. De Chile",
+              "equipo_visitante": "Huachipato",
+              "goles_local": "2",
+              "goles_visitante": "0",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/huachipato-SlhZpIaP/u-de-chile-xW771C6U/?mid=OYgkBdvf"
+            },
+            {
+              "fecha": "25.07. 21:30",
+              "hora": "21:30",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Huachipato",
+              "equipo_visitante": "Cobresal",
+              "goles_local": "3",
+              "goles_visitante": "3",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/cobresal-YeUwzehC/huachipato-SlhZpIaP/?mid=G8jsDI9s"
+            }
+          ]
+        }
+      },
+      "Q1": {
+        "query": {
+          "tipo": "Q1",
+          "slug": "u-de-concepcion",
+          "equipo_id": "6BcMMext"
+        },
+        "data": {
+          "equipo": "u-de-concepcion",
+          "proximos_partidos": [
+            {
+              "fecha": "13.09. 15:30",
+              "hora": "15:30",
+              "competicion": "Liga de Primera",
+              "equipo_local": "U. De Concepción",
+              "equipo_visitante": "Huachipato",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/huachipato-SlhZpIaP/u-de-concepcion-6BcMMext/?mid=OWWaQs2l"
+            },
+            {
+              "fecha": "10.10. 18:00",
+              "hora": "18:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Cobresal",
+              "equipo_visitante": "U. De Concepción",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/cobresal-YeUwzehC/u-de-concepcion-6BcMMext/?mid=40V1p3gK"
+            },
+            {
+              "fecha": "25.10. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "U. De Concepción",
+              "equipo_visitante": "Limache",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/limache-YPTUuyqJ/u-de-concepcion-6BcMMext/?mid=vHI60FqI"
+            },
+            {
+              "fecha": "01.11. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Colo Colo",
+              "equipo_visitante": "U. De Concepción",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/u-de-concepcion-6BcMMext/?mid=pGpvr7Tj"
+            },
+            {
+              "fecha": "08.11. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "U. De Concepción",
+              "equipo_visitante": "O'Higgins",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/o-higgins-hYrshGxg/u-de-concepcion-6BcMMext/?mid=pIwq4977"
+            },
+            {
+              "fecha": "22.11. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "U. De Concepción",
+              "equipo_visitante": "Ñublense",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/nublense-vVvwgdNn/u-de-concepcion-6BcMMext/?mid=xWMoKLc5"
+            },
+            {
+              "fecha": "29.11. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "U. La Calera",
+              "equipo_visitante": "U. De Concepción",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/u-de-concepcion-6BcMMext/u-la-calera-M34g8ulJ/?mid=I3cKYKCb"
+            },
+            {
+              "fecha": "06.12. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "U. De Concepción",
+              "equipo_visitante": "U. Católica",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/u-catolica-Qe432hiO/u-de-concepcion-6BcMMext/?mid=GYeGjgYq"
+            }
+          ]
+        }
+      },
+      "Q4": {
+        "query": {
+          "tipo": "Q4",
+          "fecha_inicio": "04.09",
+          "fecha_fin": "11.09"
+        },
+        "data": {
+          "periodo": "04.09 a 11.09",
+          "partidos": [
+            {
+              "jornada": null,
+              "fecha": "07.09. 23:00",
+              "hora": "23:00",
+              "equipo_local": "Limache",
+              "equipo_visitante": "Cobresal",
+              "goles_local": "3",
+              "goles_visitante": "0",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/cobresal-YeUwzehC/limache-YPTUuyqJ/?mid=AR12LeKi"
+            },
+            {
+              "jornada": null,
+              "fecha": "06.09. 22:30",
+              "hora": "22:30",
+              "equipo_local": "Palestino",
+              "equipo_visitante": "U. De Concepción",
+              "goles_local": "2",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/palestino-U35cjf75/u-de-concepcion-6BcMMext/?mid=rgF9JZl4"
+            },
+            {
+              "jornada": null,
+              "fecha": "06.09. 20:00",
+              "hora": "20:00",
+              "equipo_local": "Huachipato",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": "0",
+              "goles_visitante": "0",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/huachipato-SlhZpIaP/?mid=CY6QFilT"
+            },
+            {
+              "jornada": null,
+              "fecha": "06.09. 17:45",
+              "hora": "17:45",
+              "equipo_local": "O'Higgins",
+              "equipo_visitante": "U. La Calera",
+              "goles_local": "2",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/o-higgins-hYrshGxg/u-la-calera-M34g8ulJ/?mid=vL8IHDJG"
+            },
+            {
+              "jornada": null,
+              "fecha": "06.09. 15:30",
+              "hora": "15:30",
+              "equipo_local": "La Serena",
+              "equipo_visitante": "Ñublense",
+              "goles_local": "2",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/la-serena-d6kYgx8t/nublense-vVvwgdNn/?mid=bmYq3E4N"
+            },
+            {
+              "jornada": null,
+              "fecha": "06.09. 00:00",
+              "hora": "00:00",
+              "equipo_local": "U. De Chile",
+              "equipo_visitante": "Coquimbo",
+              "goles_local": "4",
+              "goles_visitante": "2",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/coquimbo-hWejMZ6h/u-de-chile-xW771C6U/?mid=2Lvy5zzB"
+            },
+            {
+              "jornada": null,
+              "fecha": "05.09. 21:30",
+              "hora": "21:30",
+              "equipo_local": "Everton",
+              "equipo_visitante": "U. Católica",
+              "goles_local": "0",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/everton-Kr3LOxgm/u-catolica-Qe432hiO/?mid=UVOFchSp"
+            },
+            {
+              "jornada": null,
+              "fecha": "05.09. 00:30",
+              "hora": "00:30",
+              "equipo_local": "Dep. Concepción",
+              "equipo_visitante": "Audax",
+              "goles_local": "0",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/a-italiano-rN3Jxc8g/dep-concepcion-GKJrZE7I/?mid=WImcAVBj"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "redis": {
+    "baseline": {
+      "evicted_keys": 0,
+      "expired_keys": 0,
+      "used_memory": 1063344,
+      "used_memory_dataset": 114728,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lfu",
+      "db0": 0
+    },
+    "final": {
+      "evicted_keys": 0,
+      "expired_keys": 0,
+      "used_memory": 1188576,
+      "used_memory_dataset": 211752,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lfu",
+      "db0": {
+        "keys": 26,
+        "expires": 26,
+        "avg_ttl": 3550746,
+        "subexpiry": 0
+      }
+    }
+  },
+  "validation": {
+    "traffic_exit_code": 0,
+    "client_attempts": 40,
+    "server_events": 40,
+    "all_requests_successful": true
+  },
+  "name": "functional-uniform-5mb-lfu",
+  "created_at": "2026-09-13T00:01:27.837938+00:00",
+  "configuration": {
+    "name": "functional-uniform-5mb-lfu",
+    "traffic": {
+      "distribution": "uniforme",
+      "request_count": 40,
+      "arrival_seconds": 0.05,
+      "zipf_alpha": 1.5,
+      "seed": 42,
+      "arrival_distribution": "uniforme"
+    },
+    "cache": {
+      "maxmemory": "5mb",
+      "eviction_policy": "allkeys-lfu",
+      "ttl_seconds": 3600
+    }
+  },
+  "metrics": {
+    "total_requests": 40,
+    "successful_requests": 40,
+    "hits": 14,
+    "misses": 26,
+    "errors": 0,
+    "hit_rate": 0.35,
+    "miss_rate": 0.65,
+    "error_rate": 0.0,
+    "throughput_rps": 0.3880408082422595,
+    "latency_ms": {
+      "average": 2531.001,
+      "p50": 3248.036,
+      "p95": 5274.368
+    },
+    "scraper_latency_ms": {
+      "average": 3876.727,
+      "p50": 3500.181,
+      "p95": 5282.179
+    },
+    "evictions": 0,
+    "expired_keys": 0,
+    "eviction_rate_per_min": 0.0,
+    "cache_efficiency_ms": -2519.6463,
+    "elapsed_seconds": 103.08194177099904,
+    "latency_scope": "client_end_to_end",
+    "percentile_window": 40,
+    "events_truncated": false,
+    "by_query": {
+      "Q1": {
+        "requests": 20,
+        "hits": 9,
+        "errors": 0,
+        "latency_ms": {
+          "average": 1875.005,
+          "p50": 3090.653,
+          "p95": 3578.247
+        }
+      },
+      "Q2": {
+        "requests": 10,
+        "hits": 2,
+        "errors": 0,
+        "latency_ms": {
+          "average": 2651.062,
+          "p50": 3239.915,
+          "p95": 3512.043
+        }
+      },
+      "Q4": {
+        "requests": 10,
+        "hits": 3,
+        "errors": 0,
+        "latency_ms": {
+          "average": 3683.86,
+          "p50": 5041.716,
+          "p95": 5954.23
+        }
+      }
+    },
+    "server_latency_ms": {
+      "average": 2521.233,
+      "p50": 3239.915,
+      "p95": 5265.828
+    },
+    "server_throughput_rps": 0.3703,
+    "source_metrics_applicable": true
+  },
+  "events": [
+    {
+      "query_type": "Q2",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3508.902,
+      "scraper_latency_ms": 3507.809,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:59:47.523345+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3098.066,
+      "scraper_latency_ms": 3096.681,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:59:50.698613+00:00"
+    },
+    {
+      "query_type": "Q2",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3179.044,
+      "scraper_latency_ms": 3178.094,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:59:53.891015+00:00"
+    },
+    {
+      "query_type": "Q4",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 4866.666,
+      "scraper_latency_ms": 4849.15,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:59:58.768566+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3192.302,
+      "scraper_latency_ms": 3191.249,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:02.053566+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3501.22,
+      "scraper_latency_ms": 3500.181,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:05.622759+00:00"
+    },
+    {
+      "query_type": "Q2",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.443,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:00:05.656802+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3360.436,
+      "scraper_latency_ms": 3359.584,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:09.103274+00:00"
+    },
+    {
+      "query_type": "Q2",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3239.915,
+      "scraper_latency_ms": 3239.104,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:12.378034+00:00"
+    },
+    {
+      "query_type": "Q2",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3301.685,
+      "scraper_latency_ms": 3300.652,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:15.731411+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3090.653,
+      "scraper_latency_ms": 3089.522,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:18.876203+00:00"
+    },
+    {
+      "query_type": "Q4",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 5954.23,
+      "scraper_latency_ms": 5953.096,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:24.935574+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3826.643,
+      "scraper_latency_ms": 3825.427,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:28.863868+00:00"
+    },
+    {
+      "query_type": "Q4",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 5041.716,
+      "scraper_latency_ms": 5040.27,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:33.941524+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.584,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:00:33.981591+00:00"
+    },
+    {
+      "query_type": "Q4",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 5160.23,
+      "scraper_latency_ms": 5158.625,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:39.196949+00:00"
+    },
+    {
+      "query_type": "Q4",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 5264.638,
+      "scraper_latency_ms": 5263.722,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:44.471751+00:00"
+    },
+    {
+      "query_type": "Q2",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3512.043,
+      "scraper_latency_ms": 3510.801,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:48.025471+00:00"
+    },
+    {
+      "query_type": "Q4",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.752,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:00:48.132954+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.868,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:00:48.229980+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3517.992,
+      "scraper_latency_ms": 3516.994,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:51.811807+00:00"
+    },
+    {
+      "query_type": "Q2",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3400.682,
+      "scraper_latency_ms": 3399.786,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:55.270237+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.718,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:00:55.375892+00:00"
+    },
+    {
+      "query_type": "Q2",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3420.02,
+      "scraper_latency_ms": 3418.88,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:00:58.865227+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.573,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:00:58.970269+00:00"
+    },
+    {
+      "query_type": "Q4",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 5265.828,
+      "scraper_latency_ms": 5264.813,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:01:04.342340+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3567.402,
+      "scraper_latency_ms": 3566.331,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:01:07.922028+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3345.025,
+      "scraper_latency_ms": 3343.905,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:01:11.287730+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3416.182,
+      "scraper_latency_ms": 3415.044,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:01:14.790117+00:00"
+    },
+    {
+      "query_type": "Q2",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 2947.382,
+      "scraper_latency_ms": 2945.726,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:01:17.762101+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.593,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:01:17.807726+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.55,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:01:17.847227+00:00"
+    },
+    {
+      "query_type": "Q4",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 5283.11,
+      "scraper_latency_ms": 5282.179,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:01:23.194061+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.718,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:01:23.209446+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.514,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:01:23.264263+00:00"
+    },
+    {
+      "query_type": "Q4",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.859,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:01:23.330788+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3578.247,
+      "scraper_latency_ms": 3577.289,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:01:26.931000+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.815,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:01:26.975509+00:00"
+    },
+    {
+      "query_type": "Q4",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.572,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:01:27.035731+00:00"
+    },
+    {
+      "query_type": "Q2",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.505,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:01:27.075333+00:00"
+    }
+  ]
+}

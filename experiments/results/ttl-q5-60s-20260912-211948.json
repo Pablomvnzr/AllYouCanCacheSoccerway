@@ -1,0 +1,433 @@
+{
+  "schema_version": 2,
+  "workload_kind": "live_soccerway",
+  "code_revision": "20a11bb7d6610975ab8522d8f30fa4bc272aa144",
+  "code_dirty": true,
+  "runtime_images": {
+    "allyoucancachesoccerway-cache-service": "sha256:c51b6f90cfcc0d3986d5cb59bb79dc2a3b1406faf4e5e5a1cc1592d50c56f3d0",
+    "allyoucancachesoccerway-metrics-service": "sha256:12920adfe6e9284c56b0ffc9b13bf33de1af0974a4bf16d14514a70912a4b011",
+    "redis:7-alpine": "sha256:ff02b58f971e7d7d156a1267e283fcbbeee91773b6aa36c49dac28ecfe28eadf",
+    "allyoucancachesoccerway-scraper-service": "sha256:6aaeb7795cf04de2704b446682846dade7ebc4d194ae85a7eef74d89ecfab245"
+  },
+  "config_sha256": "5363cf06e708b5d61233504982e571ae4f74142bdaeae9b8295e8bdc16c454b8",
+  "workspace_source_sha256": {
+    "generador_trafico/src/distributions.py": "90b697d6b2bf670837933da59ac6ff04644b904758bd87fd46dc16bab70ad413",
+    "generador_trafico/src/main.py": "462274b71b9a89890d2f67f53c902871b5c2db9fc9f1e3795a5d6e4a111b475a",
+    "generador_trafico/src/query_builder.py": "0b2003779a8f242362afd86f81c9b51d0845704165af3467853aba195f159535",
+    "Sistemas_de_cache/src/cache_manager.py": "63e52d039e17b2f8ded7230d3443ba398ace52b119b86522f0224a26464313c7",
+    "Sistemas_de_cache/src/key_builder.py": "b6b48194834006cc7370587174658dda3500806d28904f8fb1b64847a7b4b038",
+    "Sistemas_de_cache/src/main.py": "93757cc8ba81d0fb4e9595c3bb64d1c04f636414d23f1805ba3c979bffa74cf8",
+    "scraper-service/src/__init__.py": "01d274cfa326e58a9332c33334b71109162752431cc6706adc51bb4dd507217d",
+    "scraper-service/src/main.py": "c1eba004bc56f2dfdbb20c9c9aca2293fc2517f7f2dc683b1d7328f90bc9481d",
+    "scraper-service/src/parsers.py": "7487c75fbf8c52cb8047d3717c9fc3970be1980d762fb05856b8fc784961a8a9",
+    "scraper-service/src/preload.py": "211da2e29f5838bf942c8af268231fdeb65e4b3aa561b28de7799e73f4aef0ab",
+    "scraper-service/src/test_parser.py": "2251ebf5fae57c081b94fd131b16f648ae9c5c8f107142694dbc67bb9aee7276",
+    "metrics-service/src/main.py": "cf5b4c0d4f6c0471d60d412f8c0ad129c15d4a8ca5ccc9879d2f4cc15d89df05",
+    "metrics-service/src/metrics_store.py": "2e1c31a63d25acbb04127a28c407aafc25e154163154ee9416c80bd76cce1136"
+  },
+  "client": {
+    "configuration": {
+      "cantidad_solicitudes": 2,
+      "tasa_arribo_segundos": 4.0,
+      "distribucion": "uniforme",
+      "parametro_zipf": 1.5,
+      "seed": 42,
+      "arrival_distribution": "constant",
+      "benchmark_key_space": 0,
+      "benchmark_value_bytes": 0
+    },
+    "counters": {
+      "attempted": 2,
+      "successful": 2,
+      "errors": 0
+    },
+    "stopped_by_user": false,
+    "elapsed_seconds": 8.158807025998613,
+    "arrival_mode": "closed-loop",
+    "events": [
+      {
+        "payload": {
+          "tipo": "Q5"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 4148.8142010002775
+      },
+      {
+        "payload": {
+          "tipo": "Q5"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 9.775718999662786
+      }
+    ],
+    "events_truncated": false,
+    "response_samples": {
+      "Q5": {
+        "query": {
+          "tipo": "Q5"
+        },
+        "data": {
+          "liga": "Primera Division Chile",
+          "tabla": [
+            {
+              "posicion": 1,
+              "equipo": "Colo Colo",
+              "equipo_id": "th4HPIws",
+              "equipo_slug": "colo-colo",
+              "partidos_jugados": 22,
+              "ganados": 17,
+              "empatados": 2,
+              "perdidos": 3,
+              "goles_favor": 47,
+              "goles_contra": 21,
+              "diferencia_goles": 26,
+              "puntos": 53
+            },
+            {
+              "posicion": 2,
+              "equipo": "U. Católica",
+              "equipo_id": "Qe432hiO",
+              "equipo_slug": "u-catolica",
+              "partidos_jugados": 23,
+              "ganados": 12,
+              "empatados": 4,
+              "perdidos": 7,
+              "goles_favor": 49,
+              "goles_contra": 33,
+              "diferencia_goles": 16,
+              "puntos": 40
+            },
+            {
+              "posicion": 3,
+              "equipo": "U. De Chile",
+              "equipo_id": "xW771C6U",
+              "equipo_slug": "u-de-chile",
+              "partidos_jugados": 22,
+              "ganados": 11,
+              "empatados": 6,
+              "perdidos": 5,
+              "goles_favor": 32,
+              "goles_contra": 19,
+              "diferencia_goles": 13,
+              "puntos": 39
+            },
+            {
+              "posicion": 4,
+              "equipo": "Palestino",
+              "equipo_id": "U35cjf75",
+              "equipo_slug": "palestino",
+              "partidos_jugados": 23,
+              "ganados": 11,
+              "empatados": 4,
+              "perdidos": 8,
+              "goles_favor": 36,
+              "goles_contra": 32,
+              "diferencia_goles": 4,
+              "puntos": 37
+            },
+            {
+              "posicion": 5,
+              "equipo": "Everton",
+              "equipo_id": "Kr3LOxgm",
+              "equipo_slug": "everton",
+              "partidos_jugados": 23,
+              "ganados": 10,
+              "empatados": 6,
+              "perdidos": 7,
+              "goles_favor": 37,
+              "goles_contra": 25,
+              "diferencia_goles": 12,
+              "puntos": 36
+            },
+            {
+              "posicion": 6,
+              "equipo": "Limache",
+              "equipo_id": "YPTUuyqJ",
+              "equipo_slug": "limache",
+              "partidos_jugados": 22,
+              "ganados": 10,
+              "empatados": 3,
+              "perdidos": 9,
+              "goles_favor": 43,
+              "goles_contra": 34,
+              "diferencia_goles": 9,
+              "puntos": 33
+            },
+            {
+              "posicion": 7,
+              "equipo": "Ñublense",
+              "equipo_id": "vVvwgdNn",
+              "equipo_slug": "nublense",
+              "partidos_jugados": 23,
+              "ganados": 8,
+              "empatados": 8,
+              "perdidos": 7,
+              "goles_favor": 28,
+              "goles_contra": 31,
+              "diferencia_goles": -3,
+              "puntos": 32
+            },
+            {
+              "posicion": 8,
+              "equipo": "La Serena",
+              "equipo_id": "d6kYgx8t",
+              "equipo_slug": "la-serena",
+              "partidos_jugados": 22,
+              "ganados": 7,
+              "empatados": 9,
+              "perdidos": 6,
+              "goles_favor": 34,
+              "goles_contra": 35,
+              "diferencia_goles": -1,
+              "puntos": 30
+            },
+            {
+              "posicion": 9,
+              "equipo": "Dep. Concepción",
+              "equipo_id": "GKJrZE7I",
+              "equipo_slug": "dep-concepcion",
+              "partidos_jugados": 22,
+              "ganados": 9,
+              "empatados": 3,
+              "perdidos": 10,
+              "goles_favor": 24,
+              "goles_contra": 25,
+              "diferencia_goles": -1,
+              "puntos": 30
+            },
+            {
+              "posicion": 10,
+              "equipo": "Coquimbo",
+              "equipo_id": "hWejMZ6h",
+              "equipo_slug": "coquimbo",
+              "partidos_jugados": 22,
+              "ganados": 8,
+              "empatados": 5,
+              "perdidos": 9,
+              "goles_favor": 31,
+              "goles_contra": 31,
+              "diferencia_goles": 0,
+              "puntos": 29
+            },
+            {
+              "posicion": 11,
+              "equipo": "O'Higgins",
+              "equipo_id": "hYrshGxg",
+              "equipo_slug": "o-higgins",
+              "partidos_jugados": 22,
+              "ganados": 8,
+              "empatados": 3,
+              "perdidos": 11,
+              "goles_favor": 28,
+              "goles_contra": 35,
+              "diferencia_goles": -7,
+              "puntos": 27
+            },
+            {
+              "posicion": 12,
+              "equipo": "Audax",
+              "equipo_id": "rN3Jxc8g",
+              "equipo_slug": "a-italiano",
+              "partidos_jugados": 22,
+              "ganados": 6,
+              "empatados": 7,
+              "perdidos": 9,
+              "goles_favor": 25,
+              "goles_contra": 31,
+              "diferencia_goles": -6,
+              "puntos": 25
+            },
+            {
+              "posicion": 13,
+              "equipo": "Huachipato",
+              "equipo_id": "SlhZpIaP",
+              "equipo_slug": "huachipato",
+              "partidos_jugados": 21,
+              "ganados": 7,
+              "empatados": 4,
+              "perdidos": 10,
+              "goles_favor": 29,
+              "goles_contra": 39,
+              "diferencia_goles": -10,
+              "puntos": 25
+            },
+            {
+              "posicion": 14,
+              "equipo": "Cobresal",
+              "equipo_id": "YeUwzehC",
+              "equipo_slug": "cobresal",
+              "partidos_jugados": 23,
+              "ganados": 7,
+              "empatados": 3,
+              "perdidos": 13,
+              "goles_favor": 34,
+              "goles_contra": 44,
+              "diferencia_goles": -10,
+              "puntos": 24
+            },
+            {
+              "posicion": 15,
+              "equipo": "U. De Concepción",
+              "equipo_id": "6BcMMext",
+              "equipo_slug": "u-de-concepcion",
+              "partidos_jugados": 22,
+              "ganados": 6,
+              "empatados": 4,
+              "perdidos": 12,
+              "goles_favor": 17,
+              "goles_contra": 37,
+              "diferencia_goles": -20,
+              "puntos": 22
+            },
+            {
+              "posicion": 16,
+              "equipo": "U. La Calera",
+              "equipo_id": "M34g8ulJ",
+              "equipo_slug": "u-la-calera",
+              "partidos_jugados": 22,
+              "ganados": 3,
+              "empatados": 5,
+              "perdidos": 14,
+              "goles_favor": 18,
+              "goles_contra": 40,
+              "diferencia_goles": -22,
+              "puntos": 14
+            }
+          ]
+        }
+      }
+    }
+  },
+  "redis": {
+    "baseline": {
+      "evicted_keys": 0,
+      "expired_keys": 0,
+      "used_memory": 1063376,
+      "used_memory_dataset": 114728,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lru",
+      "db0": 0
+    },
+    "final": {
+      "evicted_keys": 0,
+      "expired_keys": 0,
+      "used_memory": 1127464,
+      "used_memory_dataset": 154704,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lru",
+      "db0": {
+        "keys": 1,
+        "expires": 1,
+        "avg_ttl": 59094,
+        "subexpiry": 0
+      }
+    }
+  },
+  "validation": {
+    "traffic_exit_code": 0,
+    "expected_requests": 2,
+    "client_attempts": 2,
+    "server_events": 2,
+    "complete": true,
+    "counts_match": true,
+    "all_requests_successful": true
+  },
+  "name": "ttl-q5-60s",
+  "created_at": "2026-09-13T00:19:48.973086+00:00",
+  "configuration": {
+    "name": "ttl-q5-60s",
+    "traffic": {
+      "distribution": "uniforme",
+      "request_count": 2,
+      "arrival_seconds": 4,
+      "zipf_alpha": 1.5,
+      "fixed_payload": {
+        "tipo": "Q5"
+      }
+    },
+    "cache": {
+      "maxmemory": "5mb",
+      "eviction_policy": "allkeys-lru",
+      "ttl_seconds": 60
+    }
+  },
+  "metrics": {
+    "total_requests": 2,
+    "successful_requests": 2,
+    "hits": 1,
+    "misses": 1,
+    "errors": 0,
+    "hit_rate": 0.5,
+    "miss_rate": 0.5,
+    "error_rate": 0.0,
+    "throughput_rps": 0.2451338772478451,
+    "latency_ms": {
+      "average": 2079.295,
+      "p50": 9.776,
+      "p95": 4148.814
+    },
+    "scraper_latency_ms": {
+      "average": 4133.414,
+      "p50": 4133.414,
+      "p95": 4133.414
+    },
+    "evictions": 0,
+    "expired_keys": 0,
+    "eviction_rate_per_min": 0.0,
+    "cache_efficiency_ms": -2066.416,
+    "elapsed_seconds": 8.158807025998613,
+    "latency_scope": "client_end_to_end",
+    "percentile_window": 2,
+    "events_truncated": false,
+    "by_query": {
+      "Q5": {
+        "requests": 2,
+        "hits": 1,
+        "errors": 0,
+        "latency_ms": {
+          "average": 2067.602,
+          "p50": 0.582,
+          "p95": 4134.623
+        }
+      }
+    },
+    "server_latency_ms": {
+      "average": 2067.602,
+      "p50": 0.582,
+      "p95": 4134.623
+    },
+    "scraper_latency_scope": "external_soccerway_fetch_and_parse",
+    "server_throughput_rps": 0.1611,
+    "source_metrics_applicable": true
+  },
+  "events": [
+    {
+      "query_type": "Q5",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 4134.623,
+      "scraper_latency_ms": 4133.414,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-13T00:19:43.694011+00:00"
+    },
+    {
+      "query_type": "Q5",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.582,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "cache",
+      "recorded_at": "2026-09-13T00:19:47.704599+00:00"
+    }
+  ]
+}

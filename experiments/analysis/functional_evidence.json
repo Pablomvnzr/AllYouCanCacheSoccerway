@@ -1,0 +1,26 @@
+{
+  "functional_checks": {
+    "Q1": {
+      "present": true,
+      "rows": 7,
+      "all_rows_have_time": true
+    },
+    "Q2": {
+      "present": true,
+      "rows": 7
+    },
+    "Q3": {
+      "present": true,
+      "rows": 5
+    },
+    "Q4": {
+      "present": true,
+      "rows": 8
+    },
+    "Q5": {
+      "present": true,
+      "rows": 16
+    }
+  },
+  "note": "La estructura válida no sustituye contrastar exactitud y frescura con Soccerway."
+}

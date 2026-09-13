@@ -12,6 +12,11 @@ services:
 
   scraper-service:
     build: ./scraper-service
+    environment:
+      SCRAPER_MODE: ${SCRAPER_MODE:-live}
+      SCRAPER_SNAPSHOT_PATH: /data/snapshot.json
+    volumes:
+      - ./scraper-service/data:/data:ro
     ports:
       - "8000:8000"
     healthcheck:
@@ -36,6 +41,7 @@ services:
       REDIS_HOST: redis
       SCRAPER_URL: http://scraper-service:8000
       CACHE_TTL_SECONDS: ${CACHE_TTL_SECONDS:-30}
+      CACHE_ALLOW_BENCHMARK: ${CACHE_ALLOW_BENCHMARK:-0}
       SCRAPER_TIMEOUT_SECONDS: 120
       METRICS_URL: http://metrics-service:9000/events
     ports:
@@ -62,6 +68,11 @@ services:
       TRAFFIC_DISTRIBUTION: ${TRAFFIC_DISTRIBUTION:-zipf}
       TRAFFIC_ZIPF_ALPHA: ${TRAFFIC_ZIPF_ALPHA:-1.5}
       TRAFFIC_FIXED_PAYLOAD: ${TRAFFIC_FIXED_PAYLOAD:-}
+      TRAFFIC_SEED: ${TRAFFIC_SEED:-42}
+      TRAFFIC_QUERY_TYPES: ${TRAFFIC_QUERY_TYPES:-}
+      TRAFFIC_ALL_PAIRS: ${TRAFFIC_ALL_PAIRS:-0}
+      TRAFFIC_ARRIVAL_DISTRIBUTION: ${TRAFFIC_ARRIVAL_DISTRIBUTION:-constant}
+      TRAFFIC_RESULTS_PATH: ${TRAFFIC_RESULTS_PATH:-}
       TRAFFIC_BENCHMARK_KEY_SPACE: ${TRAFFIC_BENCHMARK_KEY_SPACE:-0}
       TRAFFIC_BENCHMARK_VALUE_BYTES: ${TRAFFIC_BENCHMARK_VALUE_BYTES:-0}
     depends_on:

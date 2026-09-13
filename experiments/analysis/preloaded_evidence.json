@@ -1,0 +1,493 @@
+{
+  "mode": "preloaded",
+  "external_calls": 0,
+  "queries": [
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "colo-colo",
+        "equipo_id": "th4HPIws"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "u-catolica",
+        "equipo_id": "Qe432hiO"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "u-de-chile",
+        "equipo_id": "xW771C6U"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "palestino",
+        "equipo_id": "U35cjf75"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "everton",
+        "equipo_id": "Kr3LOxgm"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "limache",
+        "equipo_id": "YPTUuyqJ"
+      },
+      "rows": 8,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "nublense",
+        "equipo_id": "vVvwgdNn"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "la-serena",
+        "equipo_id": "d6kYgx8t"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "dep-concepcion",
+        "equipo_id": "GKJrZE7I"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "coquimbo",
+        "equipo_id": "hWejMZ6h"
+      },
+      "rows": 8,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "o-higgins",
+        "equipo_id": "hYrshGxg"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "a-italiano",
+        "equipo_id": "rN3Jxc8g"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "huachipato",
+        "equipo_id": "SlhZpIaP"
+      },
+      "rows": 8,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "u-de-concepcion",
+        "equipo_id": "6BcMMext"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "cobresal",
+        "equipo_id": "YeUwzehC"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q1",
+        "slug": "u-la-calera",
+        "equipo_id": "M34g8ulJ"
+      },
+      "rows": 8,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "colo-colo",
+        "equipo_id": "th4HPIws"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "u-catolica",
+        "equipo_id": "Qe432hiO"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "u-de-chile",
+        "equipo_id": "xW771C6U"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "palestino",
+        "equipo_id": "U35cjf75"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "everton",
+        "equipo_id": "Kr3LOxgm"
+      },
+      "rows": 8,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "limache",
+        "equipo_id": "YPTUuyqJ"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "nublense",
+        "equipo_id": "vVvwgdNn"
+      },
+      "rows": 8,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "la-serena",
+        "equipo_id": "d6kYgx8t"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "dep-concepcion",
+        "equipo_id": "GKJrZE7I"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "coquimbo",
+        "equipo_id": "hWejMZ6h"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "o-higgins",
+        "equipo_id": "hYrshGxg"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "a-italiano",
+        "equipo_id": "rN3Jxc8g"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "huachipato",
+        "equipo_id": "SlhZpIaP"
+      },
+      "rows": 6,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "u-de-concepcion",
+        "equipo_id": "6BcMMext"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "cobresal",
+        "equipo_id": "YeUwzehC"
+      },
+      "rows": 8,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q2",
+        "slug": "u-la-calera",
+        "equipo_id": "M34g8ulJ"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q3",
+        "slug1": "colo-colo",
+        "id1": "th4HPIws",
+        "slug2": "u-catolica",
+        "id2": "Qe432hiO"
+      },
+      "rows": 5,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "01.09",
+        "fecha_fin": "08.09"
+      },
+      "rows": 11,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "02.09",
+        "fecha_fin": "09.09"
+      },
+      "rows": 10,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "03.09",
+        "fecha_fin": "10.09"
+      },
+      "rows": 9,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "04.09",
+        "fecha_fin": "11.09"
+      },
+      "rows": 8,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "05.09",
+        "fecha_fin": "12.09"
+      },
+      "rows": 10,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "06.09",
+        "fecha_fin": "13.09"
+      },
+      "rows": 12,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "07.09",
+        "fecha_fin": "14.09"
+      },
+      "rows": 8,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "08.09",
+        "fecha_fin": "15.09"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "09.09",
+        "fecha_fin": "16.09"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "10.09",
+        "fecha_fin": "17.09"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "11.09",
+        "fecha_fin": "18.09"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "12.09",
+        "fecha_fin": "19.09"
+      },
+      "rows": 7,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "13.09",
+        "fecha_fin": "20.09"
+      },
+      "rows": 5,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "14.09",
+        "fecha_fin": "21.09"
+      },
+      "rows": 1,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "15.09",
+        "fecha_fin": "22.09"
+      },
+      "rows": 0,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "16.09",
+        "fecha_fin": "23.09"
+      },
+      "rows": 0,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "17.09",
+        "fecha_fin": "24.09"
+      },
+      "rows": 0,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "18.09",
+        "fecha_fin": "25.09"
+      },
+      "rows": 0,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "19.09",
+        "fecha_fin": "26.09"
+      },
+      "rows": 0,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q4",
+        "fecha_inicio": "20.09",
+        "fecha_fin": "27.09"
+      },
+      "rows": 0,
+      "success": true
+    },
+    {
+      "query": {
+        "tipo": "Q5"
+      },
+      "rows": 16,
+      "success": true
+    }
+  ],
+  "all_successful": true
+}

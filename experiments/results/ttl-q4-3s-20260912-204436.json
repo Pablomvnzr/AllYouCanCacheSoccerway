@@ -1,0 +1,266 @@
+{
+  "schema_version": 2,
+  "workload_kind": "live_soccerway",
+  "code_revision": "20a11bb7d6610975ab8522d8f30fa4bc272aa144",
+  "code_dirty": true,
+  "config_sha256": "9335eace60780b579dcc40d3533c7934fcc9741325acd422c1d0688082904971",
+  "client": {
+    "configuration": {
+      "cantidad_solicitudes": 2,
+      "tasa_arribo_segundos": 4.0,
+      "distribucion": "uniforme",
+      "parametro_zipf": 1.5,
+      "seed": 42,
+      "arrival_distribution": "constant",
+      "benchmark_key_space": 0,
+      "benchmark_value_bytes": 0
+    },
+    "counters": {
+      "attempted": 2,
+      "successful": 2,
+      "errors": 0
+    },
+    "stopped_by_user": false,
+    "elapsed_seconds": 18.95962621599938,
+    "arrival_mode": "closed-loop",
+    "events": [
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "04.09",
+          "fecha_fin": "07.09"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 5166.920794999896
+      },
+      {
+        "payload": {
+          "tipo": "Q4",
+          "fecha_inicio": "04.09",
+          "fecha_fin": "07.09"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 5792.2596799999155
+      }
+    ],
+    "events_truncated": false,
+    "response_samples": {
+      "Q4": {
+        "query": {
+          "tipo": "Q4",
+          "fecha_inicio": "04.09",
+          "fecha_fin": "07.09"
+        },
+        "data": {
+          "periodo": "04.09 a 07.09",
+          "partidos": [
+            {
+              "jornada": null,
+              "fecha": "07.09. 23:00",
+              "hora": "23:00",
+              "equipo_local": "Limache",
+              "equipo_visitante": "Cobresal",
+              "goles_local": "3",
+              "goles_visitante": "0",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/cobresal-YeUwzehC/limache-YPTUuyqJ/?mid=AR12LeKi"
+            },
+            {
+              "jornada": null,
+              "fecha": "06.09. 22:30",
+              "hora": "22:30",
+              "equipo_local": "Palestino",
+              "equipo_visitante": "U. De Concepción",
+              "goles_local": "2",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/palestino-U35cjf75/u-de-concepcion-6BcMMext/?mid=rgF9JZl4"
+            },
+            {
+              "jornada": null,
+              "fecha": "06.09. 20:00",
+              "hora": "20:00",
+              "equipo_local": "Huachipato",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": "0",
+              "goles_visitante": "0",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/huachipato-SlhZpIaP/?mid=CY6QFilT"
+            },
+            {
+              "jornada": null,
+              "fecha": "06.09. 17:45",
+              "hora": "17:45",
+              "equipo_local": "O'Higgins",
+              "equipo_visitante": "U. La Calera",
+              "goles_local": "2",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/o-higgins-hYrshGxg/u-la-calera-M34g8ulJ/?mid=vL8IHDJG"
+            },
+            {
+              "jornada": null,
+              "fecha": "06.09. 15:30",
+              "hora": "15:30",
+              "equipo_local": "La Serena",
+              "equipo_visitante": "Ñublense",
+              "goles_local": "2",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/la-serena-d6kYgx8t/nublense-vVvwgdNn/?mid=bmYq3E4N"
+            },
+            {
+              "jornada": null,
+              "fecha": "06.09. 00:00",
+              "hora": "00:00",
+              "equipo_local": "U. De Chile",
+              "equipo_visitante": "Coquimbo",
+              "goles_local": "4",
+              "goles_visitante": "2",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/coquimbo-hWejMZ6h/u-de-chile-xW771C6U/?mid=2Lvy5zzB"
+            },
+            {
+              "jornada": null,
+              "fecha": "05.09. 21:30",
+              "hora": "21:30",
+              "equipo_local": "Everton",
+              "equipo_visitante": "U. Católica",
+              "goles_local": "0",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/everton-Kr3LOxgm/u-catolica-Qe432hiO/?mid=UVOFchSp"
+            },
+            {
+              "jornada": null,
+              "fecha": "05.09. 00:30",
+              "hora": "00:30",
+              "equipo_local": "Dep. Concepción",
+              "equipo_visitante": "Audax",
+              "goles_local": "0",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/a-italiano-rN3Jxc8g/dep-concepcion-GKJrZE7I/?mid=WImcAVBj"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "redis": {
+    "baseline": {
+      "evicted_keys": 0,
+      "expired_keys": 0,
+      "used_memory": 1063440,
+      "used_memory_dataset": 76968,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lru",
+      "db0": 0
+    },
+    "final": {
+      "evicted_keys": 0,
+      "expired_keys": 2,
+      "used_memory": 1122336,
+      "used_memory_dataset": 171072,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lru",
+      "db0": 0
+    }
+  },
+  "validation": {
+    "traffic_exit_code": 0,
+    "client_attempts": 2,
+    "server_events": 2,
+    "all_requests_successful": true
+  },
+  "name": "ttl-q4-3s",
+  "created_at": "2026-09-12T23:44:36.158603+00:00",
+  "configuration": {
+    "name": "ttl-q4-3s",
+    "traffic": {
+      "distribution": "uniforme",
+      "request_count": 2,
+      "arrival_seconds": 4,
+      "zipf_alpha": 1.5,
+      "fixed_payload": {
+        "tipo": "Q4",
+        "fecha_inicio": "04.09",
+        "fecha_fin": "07.09"
+      }
+    },
+    "cache": {
+      "maxmemory": "5mb",
+      "eviction_policy": "allkeys-lru",
+      "ttl_seconds": 3
+    }
+  },
+  "metrics": {
+    "total_requests": 2,
+    "successful_requests": 2,
+    "hits": 0,
+    "misses": 2,
+    "errors": 0,
+    "hit_rate": 0.0,
+    "miss_rate": 1.0,
+    "error_rate": 0.0,
+    "throughput_rps": 0.1054873116808742,
+    "latency_ms": {
+      "average": 5479.59,
+      "p50": 5166.921,
+      "p95": 5792.26
+    },
+    "scraper_latency_ms": {
+      "average": 5463.055,
+      "p50": 5144.359,
+      "p95": 5781.75
+    },
+    "evictions": 0,
+    "expired_keys": 2,
+    "eviction_rate_per_min": 0.0,
+    "cache_efficiency_ms": -5463.0545,
+    "elapsed_seconds": 18.95962621599938,
+    "latency_scope": "client_end_to_end",
+    "percentile_window": 2,
+    "events_truncated": false,
+    "by_query": {
+      "Q4": {
+        "requests": 2,
+        "hits": 0,
+        "errors": 0,
+        "latency_ms": {
+          "average": 5468.894,
+          "p50": 5154.467,
+          "p95": 5783.32
+        }
+      }
+    },
+    "server_latency_ms": {
+      "average": 5468.894,
+      "p50": 5154.467,
+      "p95": 5783.32
+    },
+    "server_throughput_rps": 0.086
+  },
+  "events": [
+    {
+      "query_type": "Q4",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 5154.467,
+      "scraper_latency_ms": 5144.359,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:44:21.705267+00:00"
+    },
+    {
+      "query_type": "Q4",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 5783.32,
+      "scraper_latency_ms": 5781.75,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:44:31.497633+00:00"
+    }
+  ]
+}

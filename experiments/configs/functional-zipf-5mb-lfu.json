@@ -1,0 +1,1 @@
+{"name":"functional-zipf-5mb-lfu","traffic":{"distribution":"zipf","request_count":40,"arrival_seconds":0.05,"zipf_alpha":1.5,"seed":42,"arrival_distribution":"zipf"},"cache":{"maxmemory":"5mb","eviction_policy":"allkeys-lfu","ttl_seconds":3600}}

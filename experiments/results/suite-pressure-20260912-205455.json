@@ -1,0 +1,89 @@
+{
+  "created_at": "2026-09-12T23:54:55.564567+00:00",
+  "runs": [
+    {
+      "config": "pressure-uniform-10mb-lfu.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-uniform-10mb-lfu-20260912-204923.json"
+      ]
+    },
+    {
+      "config": "pressure-uniform-10mb-lru.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-uniform-10mb-lru-20260912-204953.json"
+      ]
+    },
+    {
+      "config": "pressure-uniform-2mb-lfu.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-uniform-2mb-lfu-20260912-205024.json"
+      ]
+    },
+    {
+      "config": "pressure-uniform-2mb-lru.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-uniform-2mb-lru-20260912-205054.json"
+      ]
+    },
+    {
+      "config": "pressure-uniform-5mb-lfu.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-uniform-5mb-lfu-20260912-205124.json"
+      ]
+    },
+    {
+      "config": "pressure-uniform-5mb-lru.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-uniform-5mb-lru-20260912-205154.json"
+      ]
+    },
+    {
+      "config": "pressure-zipf-10mb-lfu.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-zipf-10mb-lfu-20260912-205224.json"
+      ]
+    },
+    {
+      "config": "pressure-zipf-10mb-lru.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-zipf-10mb-lru-20260912-205254.json"
+      ]
+    },
+    {
+      "config": "pressure-zipf-2mb-lfu.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-zipf-2mb-lfu-20260912-205323.json"
+      ]
+    },
+    {
+      "config": "pressure-zipf-2mb-lru.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-zipf-2mb-lru-20260912-205354.json"
+      ]
+    },
+    {
+      "config": "pressure-zipf-5mb-lfu.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-zipf-5mb-lfu-20260912-205423.json"
+      ]
+    },
+    {
+      "config": "pressure-zipf-5mb-lru.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/pressure-zipf-5mb-lru-20260912-205453.json"
+      ]
+    }
+  ]
+}

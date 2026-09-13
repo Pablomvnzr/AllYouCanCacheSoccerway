@@ -1,0 +1,240 @@
+{
+  "schema_version": 2,
+  "workload_kind": "live_soccerway",
+  "code_revision": "20a11bb7d6610975ab8522d8f30fa4bc272aa144",
+  "code_dirty": true,
+  "config_sha256": "5f73e5d781298f212d49da126ba799874e5d701c943baf348e945ef32b8ffcd5",
+  "client": {
+    "configuration": {
+      "cantidad_solicitudes": 2,
+      "tasa_arribo_segundos": 4.0,
+      "distribucion": "uniforme",
+      "parametro_zipf": 1.5,
+      "seed": 42,
+      "arrival_distribution": "constant",
+      "benchmark_key_space": 0,
+      "benchmark_value_bytes": 0
+    },
+    "counters": {
+      "attempted": 2,
+      "successful": 2,
+      "errors": 0
+    },
+    "stopped_by_user": false,
+    "elapsed_seconds": 27.015046903999973,
+    "arrival_mode": "closed-loop",
+    "events": [
+      {
+        "payload": {
+          "tipo": "Q3",
+          "slug1": "colo-colo",
+          "id1": "th4HPIws",
+          "slug2": "u-de-chile",
+          "id2": "xW771C6U"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 10107.556699998895
+      },
+      {
+        "payload": {
+          "tipo": "Q3",
+          "slug1": "colo-colo",
+          "id1": "th4HPIws",
+          "slug2": "u-de-chile",
+          "id2": "xW771C6U"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 8907.067711999844
+      }
+    ],
+    "events_truncated": false,
+    "response_samples": {
+      "Q3": {
+        "query": {
+          "tipo": "Q3",
+          "slug1": "colo-colo",
+          "id1": "th4HPIws",
+          "slug2": "u-de-chile",
+          "id2": "xW771C6U"
+        },
+        "data": {
+          "equipo_1": "Colo Colo",
+          "equipo_2": "U. De Chile",
+          "enfrentamientos": [
+            {
+              "fecha": "23.08.26",
+              "competicion": "Liga de Primera (Chile)",
+              "equipo_local": "U. De Chile",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": "1",
+              "goles_visitante": "2",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/u-de-chile-xW771C6U/?mid=8d261tCL"
+            },
+            {
+              "fecha": "01.03.26",
+              "competicion": "Liga de Primera (Chile)",
+              "equipo_local": "Colo Colo",
+              "equipo_visitante": "U. De Chile",
+              "goles_local": "0",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/u-de-chile-xW771C6U/?mid=xWMJo3tJ"
+            },
+            {
+              "fecha": "14.09.25",
+              "competicion": "Supercopa (Chile)",
+              "equipo_local": "Colo Colo",
+              "equipo_visitante": "U. De Chile",
+              "goles_local": "0",
+              "goles_visitante": "3",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/u-de-chile-xW771C6U/?mid=fJgvXV5U"
+            },
+            {
+              "fecha": "31.08.25",
+              "competicion": "Liga de Primera (Chile)",
+              "equipo_local": "Colo Colo",
+              "equipo_visitante": "U. De Chile",
+              "goles_local": "1",
+              "goles_visitante": "0",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/u-de-chile-xW771C6U/?mid=6Hsuh0sH"
+            },
+            {
+              "fecha": "12.07.25",
+              "competicion": "Liga de Primera (Chile)",
+              "equipo_local": "U. De Chile",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": "2",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/u-de-chile-xW771C6U/?mid=YJc3bDSG"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "redis": {
+    "baseline": {
+      "evicted_keys": 0,
+      "expired_keys": 0,
+      "used_memory": 1063472,
+      "used_memory_dataset": 114728,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lru",
+      "db0": 0
+    },
+    "final": {
+      "evicted_keys": 0,
+      "expired_keys": 2,
+      "used_memory": 1122368,
+      "used_memory_dataset": 171072,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lru",
+      "db0": 0
+    }
+  },
+  "validation": {
+    "traffic_exit_code": 0,
+    "client_attempts": 2,
+    "server_events": 2,
+    "all_requests_successful": true
+  },
+  "name": "ttl-q3-3s",
+  "created_at": "2026-09-12T23:43:19.487617+00:00",
+  "configuration": {
+    "name": "ttl-q3-3s",
+    "traffic": {
+      "distribution": "uniforme",
+      "request_count": 2,
+      "arrival_seconds": 4,
+      "zipf_alpha": 1.5,
+      "fixed_payload": {
+        "tipo": "Q3",
+        "slug1": "colo-colo",
+        "id1": "th4HPIws",
+        "slug2": "u-de-chile",
+        "id2": "xW771C6U"
+      }
+    },
+    "cache": {
+      "maxmemory": "5mb",
+      "eviction_policy": "allkeys-lru",
+      "ttl_seconds": 3
+    }
+  },
+  "metrics": {
+    "total_requests": 2,
+    "successful_requests": 2,
+    "hits": 0,
+    "misses": 2,
+    "errors": 0,
+    "hit_rate": 0.0,
+    "miss_rate": 1.0,
+    "error_rate": 0.0,
+    "throughput_rps": 0.07403281612307216,
+    "latency_ms": {
+      "average": 9507.312,
+      "p50": 8907.068,
+      "p95": 10107.557
+    },
+    "scraper_latency_ms": {
+      "average": 9494.761,
+      "p50": 8894.747,
+      "p95": 10094.774
+    },
+    "evictions": 0,
+    "expired_keys": 2,
+    "eviction_rate_per_min": 0.0,
+    "cache_efficiency_ms": -9494.7605,
+    "elapsed_seconds": 27.015046903999973,
+    "latency_scope": "client_end_to_end",
+    "percentile_window": 2,
+    "events_truncated": false,
+    "by_query": {
+      "Q3": {
+        "requests": 2,
+        "hits": 0,
+        "errors": 0,
+        "latency_ms": {
+          "average": 9496.046,
+          "p50": 8895.697,
+          "p95": 10096.395
+        }
+      }
+    },
+    "server_latency_ms": {
+      "average": 9496.046,
+      "p50": 8895.697,
+      "p95": 10096.395
+    },
+    "server_throughput_rps": 0.0638
+  },
+  "events": [
+    {
+      "query_type": "Q3",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 10096.395,
+      "scraper_latency_ms": 10094.774,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:43:01.806834+00:00"
+    },
+    {
+      "query_type": "Q3",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 8895.697,
+      "scraper_latency_ms": 8894.747,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:43:14.714272+00:00"
+    }
+  ]
+}

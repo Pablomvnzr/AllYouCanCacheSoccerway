@@ -1,0 +1,266 @@
+{
+  "schema_version": 2,
+  "workload_kind": "live_soccerway",
+  "code_revision": "20a11bb7d6610975ab8522d8f30fa4bc272aa144",
+  "code_dirty": true,
+  "config_sha256": "fe90798732c9a10cb0af2a970b5881719d8a8fb3594f32f6548f8aec097c8e0f",
+  "client": {
+    "configuration": {
+      "cantidad_solicitudes": 2,
+      "tasa_arribo_segundos": 4.0,
+      "distribucion": "uniforme",
+      "parametro_zipf": 1.5,
+      "seed": 42,
+      "arrival_distribution": "constant",
+      "benchmark_key_space": 0,
+      "benchmark_value_bytes": 0
+    },
+    "counters": {
+      "attempted": 2,
+      "successful": 2,
+      "errors": 0
+    },
+    "stopped_by_user": false,
+    "elapsed_seconds": 15.812939315001131,
+    "arrival_mode": "closed-loop",
+    "events": [
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "colo-colo",
+          "equipo_id": "th4HPIws"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 4682.860789998813
+      },
+      {
+        "payload": {
+          "tipo": "Q1",
+          "slug": "colo-colo",
+          "equipo_id": "th4HPIws"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3129.64187399848
+      }
+    ],
+    "events_truncated": false,
+    "response_samples": {
+      "Q1": {
+        "query": {
+          "tipo": "Q1",
+          "slug": "colo-colo",
+          "equipo_id": "th4HPIws"
+        },
+        "data": {
+          "equipo": "colo-colo",
+          "proximos_partidos": [
+            {
+              "fecha": "13.09. 20:30",
+              "hora": "20:30",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Colo Colo",
+              "equipo_visitante": "Dep. Concepción",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/dep-concepcion-GKJrZE7I/?mid=dduqYY3c"
+            },
+            {
+              "fecha": "11.10. 18:00",
+              "hora": "18:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Coquimbo",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/coquimbo-hWejMZ6h/?mid=OpCYvsHs"
+            },
+            {
+              "fecha": "25.10. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Palestino",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/palestino-U35cjf75/?mid=4Oek6JFt"
+            },
+            {
+              "fecha": "01.11. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Colo Colo",
+              "equipo_visitante": "U. De Concepción",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/u-de-concepcion-6BcMMext/?mid=pGpvr7Tj"
+            },
+            {
+              "fecha": "08.11. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Ñublense",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/nublense-vVvwgdNn/?mid=ljpz6Vxe"
+            },
+            {
+              "fecha": "22.11. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Colo Colo",
+              "equipo_visitante": "U. Católica",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/u-catolica-Qe432hiO/?mid=xCQURCaE"
+            },
+            {
+              "fecha": "29.11. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Colo Colo",
+              "equipo_visitante": "La Serena",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/la-serena-d6kYgx8t/?mid=pdQgIaSH"
+            },
+            {
+              "fecha": "06.12. 21:00",
+              "hora": "21:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Cobresal",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": null,
+              "goles_visitante": null,
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/cobresal-YeUwzehC/colo-colo-th4HPIws/?mid=0nFAqxRG"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "redis": {
+    "baseline": {
+      "evicted_keys": 0,
+      "expired_keys": 0,
+      "used_memory": 1063536,
+      "used_memory_dataset": 76968,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lru",
+      "db0": 0
+    },
+    "final": {
+      "evicted_keys": 0,
+      "expired_keys": 2,
+      "used_memory": 1123456,
+      "used_memory_dataset": 150600,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lru",
+      "db0": 0
+    }
+  },
+  "validation": {
+    "traffic_exit_code": 0,
+    "client_attempts": 2,
+    "server_events": 2,
+    "all_requests_successful": true
+  },
+  "name": "ttl-q1-3s",
+  "created_at": "2026-09-12T23:40:53.428512+00:00",
+  "configuration": {
+    "name": "ttl-q1-3s",
+    "traffic": {
+      "distribution": "uniforme",
+      "request_count": 2,
+      "arrival_seconds": 4,
+      "zipf_alpha": 1.5,
+      "fixed_payload": {
+        "tipo": "Q1",
+        "slug": "colo-colo",
+        "equipo_id": "th4HPIws"
+      }
+    },
+    "cache": {
+      "maxmemory": "5mb",
+      "eviction_policy": "allkeys-lru",
+      "ttl_seconds": 3
+    }
+  },
+  "metrics": {
+    "total_requests": 2,
+    "successful_requests": 2,
+    "hits": 0,
+    "misses": 2,
+    "errors": 0,
+    "hit_rate": 0.0,
+    "miss_rate": 1.0,
+    "error_rate": 0.0,
+    "throughput_rps": 0.12647869951051266,
+    "latency_ms": {
+      "average": 3906.251,
+      "p50": 3129.642,
+      "p95": 4682.861
+    },
+    "scraper_latency_ms": {
+      "average": 3889.791,
+      "p50": 3117.977,
+      "p95": 4661.605
+    },
+    "evictions": 0,
+    "expired_keys": 2,
+    "eviction_rate_per_min": 0.0,
+    "cache_efficiency_ms": -3889.791,
+    "elapsed_seconds": 15.812939315001131,
+    "latency_scope": "client_end_to_end",
+    "percentile_window": 2,
+    "events_truncated": false,
+    "by_query": {
+      "Q1": {
+        "requests": 2,
+        "hits": 0,
+        "errors": 0,
+        "latency_ms": {
+          "average": 3891.288,
+          "p50": 3119.159,
+          "p95": 4663.416
+        }
+      }
+    },
+    "server_latency_ms": {
+      "average": 3891.288,
+      "p50": 3119.159,
+      "p95": 4663.416
+    },
+    "server_throughput_rps": 0.099
+  },
+  "events": [
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 4663.416,
+      "scraper_latency_ms": 4661.605,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:40:41.699658+00:00"
+    },
+    {
+      "query_type": "Q1",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3119.159,
+      "scraper_latency_ms": 3117.977,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:40:48.831895+00:00"
+    }
+  ]
+}

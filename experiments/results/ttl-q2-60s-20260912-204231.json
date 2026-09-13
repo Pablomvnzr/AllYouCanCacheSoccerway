@@ -1,0 +1,261 @@
+{
+  "schema_version": 2,
+  "workload_kind": "live_soccerway",
+  "code_revision": "20a11bb7d6610975ab8522d8f30fa4bc272aa144",
+  "code_dirty": true,
+  "config_sha256": "f379ebdeb750c2df49ed47b8c30839febed619d6f0cbf0db0ff036b78f4c9653",
+  "client": {
+    "configuration": {
+      "cantidad_solicitudes": 2,
+      "tasa_arribo_segundos": 4.0,
+      "distribucion": "uniforme",
+      "parametro_zipf": 1.5,
+      "seed": 42,
+      "arrival_distribution": "constant",
+      "benchmark_key_space": 0,
+      "benchmark_value_bytes": 0
+    },
+    "counters": {
+      "attempted": 2,
+      "successful": 2,
+      "errors": 0
+    },
+    "stopped_by_user": false,
+    "elapsed_seconds": 11.2704718519999,
+    "arrival_mode": "closed-loop",
+    "events": [
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "colo-colo",
+          "equipo_id": "th4HPIws"
+        },
+        "success": true,
+        "cache_status": "miss",
+        "origin": "scraper",
+        "latency_ms": 3261.046613999497
+      },
+      {
+        "payload": {
+          "tipo": "Q2",
+          "slug": "colo-colo",
+          "equipo_id": "th4HPIws"
+        },
+        "success": true,
+        "cache_status": "hit",
+        "origin": "cache",
+        "latency_ms": 9.022528000059538
+      }
+    ],
+    "events_truncated": false,
+    "response_samples": {
+      "Q2": {
+        "query": {
+          "tipo": "Q2",
+          "slug": "colo-colo",
+          "equipo_id": "th4HPIws"
+        },
+        "data": {
+          "equipo": "colo-colo",
+          "ultimos_partidos": [
+            {
+              "fecha": "06.09. 20:00",
+              "hora": "20:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Huachipato",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": "0",
+              "goles_visitante": "0",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/huachipato-SlhZpIaP/?mid=CY6QFilT"
+            },
+            {
+              "fecha": "30.08. 21:30",
+              "hora": "21:30",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Colo Colo",
+              "equipo_visitante": "Audax",
+              "goles_local": "5",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/a-italiano-rN3Jxc8g/colo-colo-th4HPIws/?mid=repxhTvP"
+            },
+            {
+              "fecha": "23.08. 19:00",
+              "hora": "19:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "U. De Chile",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": "1",
+              "goles_visitante": "2",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/u-de-chile-xW771C6U/?mid=8d261tCL"
+            },
+            {
+              "fecha": "16.08. 21:30",
+              "hora": "21:30",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Colo Colo",
+              "equipo_visitante": "O'Higgins",
+              "goles_local": "2",
+              "goles_visitante": "2",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/o-higgins-hYrshGxg/?mid=hfNTUsyp"
+            },
+            {
+              "fecha": "09.08. 21:30",
+              "hora": "21:30",
+              "competicion": "Liga de Primera",
+              "equipo_local": "U. La Calera",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": "1",
+              "goles_visitante": "2",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/u-la-calera-M34g8ulJ/?mid=rLBOL4bT"
+            },
+            {
+              "fecha": "01.08. 19:00",
+              "hora": "19:00",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Everton",
+              "equipo_visitante": "Colo Colo",
+              "goles_local": "3",
+              "goles_visitante": "4",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/everton-Kr3LOxgm/?mid=h4rhVHVP"
+            },
+            {
+              "fecha": "25.07. 00:30",
+              "hora": "00:30",
+              "competicion": "Liga de Primera",
+              "equipo_local": "Colo Colo",
+              "equipo_visitante": "Limache",
+              "goles_local": "3",
+              "goles_visitante": "1",
+              "url_partido": "https://cl.soccerway.com/detalle-del-partido/colo-colo-th4HPIws/limache-YPTUuyqJ/?mid=WOtlrbA7"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "redis": {
+    "baseline": {
+      "evicted_keys": 0,
+      "expired_keys": 0,
+      "used_memory": 1063376,
+      "used_memory_dataset": 76968,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lru",
+      "db0": 0
+    },
+    "final": {
+      "evicted_keys": 0,
+      "expired_keys": 0,
+      "used_memory": 1124920,
+      "used_memory_dataset": 153184,
+      "maxmemory": 5242880,
+      "maxmemory_policy": "allkeys-lru",
+      "db0": {
+        "keys": 1,
+        "expires": 1,
+        "avg_ttl": 55553,
+        "subexpiry": 0
+      }
+    }
+  },
+  "validation": {
+    "traffic_exit_code": 0,
+    "client_attempts": 2,
+    "server_events": 2,
+    "all_requests_successful": true
+  },
+  "name": "ttl-q2-60s",
+  "created_at": "2026-09-12T23:42:31.868068+00:00",
+  "configuration": {
+    "name": "ttl-q2-60s",
+    "traffic": {
+      "distribution": "uniforme",
+      "request_count": 2,
+      "arrival_seconds": 4,
+      "zipf_alpha": 1.5,
+      "fixed_payload": {
+        "tipo": "Q2",
+        "slug": "colo-colo",
+        "equipo_id": "th4HPIws"
+      }
+    },
+    "cache": {
+      "maxmemory": "5mb",
+      "eviction_policy": "allkeys-lru",
+      "ttl_seconds": 60
+    }
+  },
+  "metrics": {
+    "total_requests": 2,
+    "successful_requests": 2,
+    "hits": 1,
+    "misses": 1,
+    "errors": 0,
+    "hit_rate": 0.5,
+    "miss_rate": 0.5,
+    "error_rate": 0.0,
+    "throughput_rps": 0.17745485958914026,
+    "latency_ms": {
+      "average": 1635.035,
+      "p50": 9.023,
+      "p95": 3261.047
+    },
+    "scraper_latency_ms": {
+      "average": 3247.512,
+      "p50": 3247.512,
+      "p95": 3247.512
+    },
+    "evictions": 0,
+    "expired_keys": 0,
+    "eviction_rate_per_min": 0.0,
+    "cache_efficiency_ms": -1623.4905,
+    "elapsed_seconds": 11.2704718519999,
+    "latency_scope": "client_end_to_end",
+    "percentile_window": 2,
+    "events_truncated": false,
+    "by_query": {
+      "Q2": {
+        "requests": 2,
+        "hits": 1,
+        "errors": 0,
+        "latency_ms": {
+          "average": 1624.682,
+          "p50": 0.531,
+          "p95": 3248.834
+        }
+      }
+    },
+    "server_latency_ms": {
+      "average": 1624.682,
+      "p50": 0.531,
+      "p95": 3248.834
+    },
+    "server_throughput_rps": 0.1292
+  },
+  "events": [
+    {
+      "query_type": "Q2",
+      "cache_status": "miss",
+      "success": true,
+      "latency_ms": 3248.834,
+      "scraper_latency_ms": 3247.512,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:42:23.276293+00:00"
+    },
+    {
+      "query_type": "Q2",
+      "cache_status": "hit",
+      "success": true,
+      "latency_ms": 0.531,
+      "scraper_latency_ms": null,
+      "error": null,
+      "evictions": 0,
+      "expired_keys": 0,
+      "source_origin": "scraper",
+      "recorded_at": "2026-09-12T23:42:27.285811+00:00"
+    }
+  ]
+}

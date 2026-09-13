@@ -1,0 +1,19 @@
+{
+  "created_at": "2026-09-13T00:14:19.978024+00:00",
+  "runs": [
+    {
+      "config": "functional-uniform-10mb-lru.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/functional-uniform-10mb-lru-20260912-211203.json"
+      ]
+    },
+    {
+      "config": "functional-uniform-2mb-lru.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/functional-uniform-2mb-lru-20260912-211417.json"
+      ]
+    }
+  ]
+}

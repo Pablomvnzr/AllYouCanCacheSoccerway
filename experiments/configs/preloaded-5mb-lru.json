@@ -1,0 +1,1 @@
+{"name":"preloaded-5mb-lru","source_mode":"preloaded","traffic":{"distribution":"uniforme","request_count":40,"arrival_seconds":0.05,"arrival_distribution":"uniforme","zipf_alpha":1.5,"seed":42},"cache":{"maxmemory":"5mb","eviction_policy":"allkeys-lru","ttl_seconds":3600}}

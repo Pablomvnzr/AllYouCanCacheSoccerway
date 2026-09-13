@@ -1,0 +1,75 @@
+{
+  "created_at": "2026-09-13T00:19:50.928254+00:00",
+  "runs": [
+    {
+      "config": "ttl-q1-3s.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/ttl-q1-3s-20260912-211451.json"
+      ]
+    },
+    {
+      "config": "ttl-q1-60s.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/ttl-q1-60s-20260912-211520.json"
+      ]
+    },
+    {
+      "config": "ttl-q2-3s.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/ttl-q2-3s-20260912-211552.json"
+      ]
+    },
+    {
+      "config": "ttl-q2-60s.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/ttl-q2-60s-20260912-211621.json"
+      ]
+    },
+    {
+      "config": "ttl-q3-3s.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/ttl-q3-3s-20260912-211705.json"
+      ]
+    },
+    {
+      "config": "ttl-q3-60s.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/ttl-q3-60s-20260912-211740.json"
+      ]
+    },
+    {
+      "config": "ttl-q4-3s.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/ttl-q4-3s-20260912-211816.json"
+      ]
+    },
+    {
+      "config": "ttl-q4-60s.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/ttl-q4-60s-20260912-211846.json"
+      ]
+    },
+    {
+      "config": "ttl-q5-3s.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/ttl-q5-3s-20260912-211919.json"
+      ]
+    },
+    {
+      "config": "ttl-q5-60s.json",
+      "exit_code": 0,
+      "results": [
+        "experiments/results/ttl-q5-60s-20260912-211948.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "valid_configurations": 31,
+  "excluded_failed_runs": [],
+  "excluded_changed_configurations": [
+    "functional-uniform-10mb-lru-20260912-205722.json",
+    "functional-uniform-2mb-lru-20260912-205923.json"
+  ],
+  "ttl": [
+    {
+      "name": "ttl-q1-3s",
+      "observed": [
+        "miss",
+        "miss"
+      ],
+      "expected": [
+        "miss",
+        "miss"
+      ],
+      "passed": true,
+      "expired_keys": 1
+    },
+    {
+      "name": "ttl-q1-60s",
+      "observed": [
+        "miss",
+        "hit"
+      ],
+      "expected": [
+        "miss",
+        "hit"
+      ],
+      "passed": true,
+      "expired_keys": 0
+    },
+    {
+      "name": "ttl-q2-3s",
+      "observed": [
+        "miss",
+        "miss"
+      ],
+      "expected": [
+        "miss",
+        "miss"
+      ],
+      "passed": true,
+      "expired_keys": 1
+    },
+    {
+      "name": "ttl-q2-60s",
+      "observed": [
+        "miss",
+        "hit"
+      ],
+      "expected": [
+        "miss",
+        "hit"
+      ],
+      "passed": true,
+      "expired_keys": 0
+    },
+    {
+      "name": "ttl-q3-3s",
+      "observed": [
+        "miss",
+        "miss"
+      ],
+      "expected": [
+        "miss",
+        "miss"
+      ],
+      "passed": true,
+      "expired_keys": 1
+    },
+    {
+      "name": "ttl-q3-60s",
+      "observed": [
+        "miss",
+        "hit"
+      ],
+      "expected": [
+        "miss",
+        "hit"
+      ],
+      "passed": true,
+      "expired_keys": 0
+    },
+    {
+      "name": "ttl-q4-3s",
+      "observed": [
+        "miss",
+        "miss"
+      ],
+      "expected": [
+        "miss",
+        "miss"
+      ],
+      "passed": true,
+      "expired_keys": 1
+    },
+    {
+      "name": "ttl-q4-60s",
+      "observed": [
+        "miss",
+        "hit"
+      ],
+      "expected": [
+        "miss",
+        "hit"
+      ],
+      "passed": true,
+      "expired_keys": 0
+    },
+    {
+      "name": "ttl-q5-3s",
+      "observed": [
+        "miss",
+        "miss"
+      ],
+      "expected": [
+        "miss",
+        "miss"
+      ],
+      "passed": true,
+      "expired_keys": 1
+    },
+    {
+      "name": "ttl-q5-60s",
+      "observed": [
+        "miss",
+        "hit"
+      ],
+      "expected": [
+        "miss",
+        "hit"
+      ],
+      "passed": true,
+      "expired_keys": 0
+    }
+  ],
+  "pressure": [
+    {
+      "name": "pressure-uniform-10mb-lfu",
+      "passed": true,
+      "evictions": 805,
+      "expired_keys": 0
+    },
+    {
+      "name": "pressure-uniform-10mb-lru",
+      "passed": true,
+      "evictions": 800,
+      "expired_keys": 0
+    },
+    {
+      "name": "pressure-uniform-2mb-lfu",
+      "passed": true,
+      "evictions": 983,
+      "expired_keys": 0
+    },
+    {
+      "name": "pressure-uniform-2mb-lru",
+      "passed": true,
+      "evictions": 981,
+      "expired_keys": 0
+    },
+    {
+      "name": "pressure-uniform-5mb-lfu",
+      "passed": true,
+      "evictions": 911,
+      "expired_keys": 0
+    },
+    {
+      "name": "pressure-uniform-5mb-lru",
+      "passed": true,
+      "evictions": 912,
+      "expired_keys": 0
+    },
+    {
+      "name": "pressure-zipf-10mb-lfu",
+      "passed": true,
+      "evictions": 222,
+      "expired_keys": 0
+    },
+    {
+      "name": "pressure-zipf-10mb-lru",
+      "passed": true,
+      "evictions": 244,
+      "expired_keys": 0
+    },
+    {
+      "name": "pressure-zipf-2mb-lfu",
+      "passed": true,
+      "evictions": 587,
+      "expired_keys": 0
+    },
+    {
+      "name": "pressure-zipf-2mb-lru",
+      "passed": true,
+      "evictions": 727,
+      "expired_keys": 0
+    },
+    {
+      "name": "pressure-zipf-5mb-lfu",
+      "passed": true,
+      "evictions": 367,
+      "expired_keys": 0
+    },
+    {
+      "name": "pressure-zipf-5mb-lru",
+      "passed": true,
+      "evictions": 443,
+      "expired_keys": 0
+    }
+  ],
+  "expected_matrices": {
+    "ttl": 10,
+    "pressure": 12,
+    "functional": 8
+  },
+  "observed_matrices": {
+    "ttl": 10,
+    "pressure": 12,
+    "functional": 8
+  }
+}
