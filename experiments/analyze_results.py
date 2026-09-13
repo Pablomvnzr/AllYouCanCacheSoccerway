@@ -54,7 +54,7 @@ def main():
                             expired_keys=m['expired_keys']))
     if rows:
         with (output / 'summary.csv').open('w', newline='', encoding='utf-8') as handle:
-            writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+            writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator='\n')
             writer.writeheader()
             writer.writerows(rows)
     checks = dict(valid_configurations=len(rows), excluded_failed_runs=excluded, excluded_changed_configurations=stale, ttl=ttl, pressure=pressure,

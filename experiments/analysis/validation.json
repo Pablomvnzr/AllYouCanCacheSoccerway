@@ -1,10 +1,7 @@
 {
   "valid_configurations": 31,
   "excluded_failed_runs": [],
-  "excluded_changed_configurations": [
-    "functional-uniform-10mb-lru-20260912-205722.json",
-    "functional-uniform-2mb-lru-20260912-205923.json"
-  ],
+  "excluded_changed_configurations": [],
   "ttl": [
     {
       "name": "ttl-q1-3s",
@@ -189,13 +186,13 @@
     {
       "name": "pressure-zipf-2mb-lfu",
       "passed": true,
-      "evictions": 587,
+      "evictions": 593,
       "expired_keys": 0
     },
     {
       "name": "pressure-zipf-2mb-lru",
       "passed": true,
-      "evictions": 727,
+      "evictions": 728,
       "expired_keys": 0
     },
     {
