@@ -1,99 +1,103 @@
-import time
-import random
-import os
+"""Carga reproducible de consultas completas y latencia de extremo a extremo."""
 import json
+import os
+import signal
+import time
+from collections import deque
+from pathlib import Path
+
 import numpy as np
-import yaml
 import requests
-from distributions import get_distribucion_index
-from query_builder import armar_payload, TIPOS_CONSULTA
+import yaml
+from distributions import get_distribucion_index, arrival_delay
+from query_builder import build_catalog
+
 
 def load_config():
-    with open("config.yaml", "r") as f:
-        config = yaml.safe_load(f)
-
-    # Compose puede sobreescribir estos valores por corrida experimental sin
-    # modificar el archivo base ni reconstruir la imagen.
+    config = yaml.safe_load(Path("config.yaml").read_text(encoding="utf-8"))
     overrides = {
         "cantidad_solicitudes": ("TRAFFIC_REQUEST_COUNT", int),
         "tasa_arribo_segundos": ("TRAFFIC_ARRIVAL_SECONDS", float),
         "distribucion": ("TRAFFIC_DISTRIBUTION", str),
         "parametro_zipf": ("TRAFFIC_ZIPF_ALPHA", float),
+        "seed": ("TRAFFIC_SEED", int),
+        "arrival_distribution": ("TRAFFIC_ARRIVAL_DISTRIBUTION", str),
         "benchmark_key_space": ("TRAFFIC_BENCHMARK_KEY_SPACE", int),
         "benchmark_value_bytes": ("TRAFFIC_BENCHMARK_VALUE_BYTES", int),
     }
-    for campo, (variable, convertir) in overrides.items():
-        if variable in os.environ:
-            config[campo] = convertir(os.environ[variable])
-
+    for field, (variable, cast) in overrides.items():
+        if os.getenv(variable):
+            config[field] = cast(os.environ[variable])
     return config
 
+
 def iniciar_trafico():
-    np.random.seed(42)
-    random.seed(42)
+    c = load_config()
+    total, delay = c["cantidad_solicitudes"], c["tasa_arribo_segundos"]
+    seed = c.get("seed", 42)
+    if total < 0 or delay < 0:
+        raise ValueError("Solicitudes o espera negativas")
+    fixed = json.loads(os.getenv("TRAFFIC_FIXED_PAYLOAD") or "null")
+    types = json.loads(os.getenv("TRAFFIC_QUERY_TYPES") or "null")
+    catalog = build_catalog(types, os.getenv("TRAFFIC_ALL_PAIRS") == "1")
+    key_space, size = c.get("benchmark_key_space", 0), c.get("benchmark_value_bytes", 0)
+    if bool(key_space) != bool(size) or not 0 <= size <= 1_000_000 or key_space < 0:
+        raise ValueError("Configuración benchmark inválida")
+    benchmark = key_space > 0 and size > 0
+    if benchmark:
+        catalog = [dict(catalog[i % len(catalog)], benchmark_id=i, benchmark_value_bytes=size) for i in range(key_space)]
+    # La permutación mantiene un catálogo idéntico entre distribuciones/políticas.
+    np.random.default_rng(seed + 2).shuffle(catalog)
+    rng, arrivals = np.random.default_rng(seed), np.random.default_rng(seed + 1)
+    records, samples = deque(maxlen=10000), {}
+    counters = dict(attempted=0, successful=0, errors=0)
+    stopped = False
 
-    config = load_config()
-    total = config["cantidad_solicitudes"]
-    tasa = config["tasa_arribo_segundos"]
-    dist = config["distribucion"]
-    alpha = config["parametro_zipf"]
+    def stop(*_):
+        nonlocal stopped
+        stopped = True
+    signal.signal(signal.SIGINT, stop)
+    signal.signal(signal.SIGTERM, stop)
+    print(f"Tráfico {c['distribucion']}; catálogo {len(catalog)}; seed {seed}; llegada closed-loop", flush=True)
+    started = time.perf_counter()
+    while not stopped and (total == 0 or counters["attempted"] < total):
+        payload = dict(fixed) if fixed else dict(catalog[get_distribucion_index(c["distribucion"], len(catalog), c["parametro_zipf"], rng)])
+        event = dict(payload=payload, success=False)
+        start = time.perf_counter()
+        try:
+            response = requests.post(os.getenv("CACHE_URL", "http://localhost:5000/api/consultas"), json=payload, timeout=180)
+            response.raise_for_status()
+            result = response.json()
+            if result.get("status") not in ("hit", "miss") or not isinstance(result.get("datos"), dict) or result["datos"].get("error"):
+                raise ValueError("Respuesta inválida")
+            event.update(success=True, cache_status=result["status"], origin=result["origen"])
+            # Evidencia funcional acotada: primera respuesta válida de cada tipo.
+            samples.setdefault(payload["tipo"], dict(query=payload, data=result["datos"]))
+        except (requests.RequestException, ValueError, KeyError) as error:
+            event["error"] = str(error)
+        event["latency_ms"] = (time.perf_counter() - start) * 1000
+        counters["attempted"] += 1
+        counters["successful" if event["success"] else "errors"] += 1
+        records.append(event)
+        if counters["attempted"] % 100 == 0 or (total and counters["attempted"] == total):
+            print(f"Solicitudes: {counters['attempted']}/{total or 'continuo'}; errores: {counters['errors']}", flush=True)
+        if total and counters["attempted"] == total:
+            break
+        pause = arrival_delay(c.get("arrival_distribution", "constant"), delay, arrivals, c["parametro_zipf"])
+        deadline = time.perf_counter() + pause
+        while not stopped and time.perf_counter() < deadline:
+            time.sleep(max(0, min(0.1, deadline - time.perf_counter())))
+    result = dict(configuration=c, counters=counters, stopped_by_user=stopped,
+                  elapsed_seconds=time.perf_counter() - started, arrival_mode="closed-loop",
+                  events=list(records), events_truncated=counters["attempted"] > len(records),
+                  response_samples=samples)
+    if os.getenv("TRAFFIC_RESULTS_PATH"):
+        path = Path(os.environ["TRAFFIC_RESULTS_PATH"])
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    print("Tráfico detenido por el usuario." if stopped else "Tráfico finalizado con errores." if counters["errors"] else "Tráfico finalizado con éxito.", flush=True)
+    return 1 if counters["errors"] else 0
 
-    URL_CACHE = os.getenv("CACHE_URL", "http://localhost:5000/api/consultas")
-    fixed_payload_raw = os.getenv("TRAFFIC_FIXED_PAYLOAD", "")
-    fixed_payload = json.loads(fixed_payload_raw) if fixed_payload_raw else None
-    benchmark_key_space = config.get("benchmark_key_space", 0)
-    benchmark_value_bytes = config.get("benchmark_value_bytes", 0)
-    benchmark_enabled = benchmark_key_space > 0 and benchmark_value_bytes > 0
-
-    print("=========================================")
-    print(f"Iniciando Generador de Tráfico (Modular)")
-    print(f"Distribución: {dist.upper()}")
-    if total < 0:
-        raise ValueError("cantidad_solicitudes debe ser un entero positivo o 0 para tráfico continuo")
-
-    detalle_total = "tráfico continuo (Ctrl+C para detener)" if total == 0 else f"{total} solicitudes"
-    print(f"Total a generar: {detalle_total}")
-    if benchmark_enabled:
-        print(
-            f"Modo de presión: {benchmark_key_space} claves por tipo, "
-            f"valores de {benchmark_value_bytes} bytes"
-        )
-    print("=========================================\n")
-
-    i = 0
-    try:
-        while total == 0 or i < total:
-            i += 1
-            if fixed_payload is not None:
-                payload = dict(fixed_payload)
-            else:
-                idx = i % len(TIPOS_CONSULTA) if benchmark_enabled else get_distribucion_index(
-                    dist, len(TIPOS_CONSULTA), alpha
-                )
-                payload = armar_payload(idx)
-                if benchmark_enabled:
-                    payload["benchmark_id"] = get_distribucion_index(
-                        dist, benchmark_key_space, alpha
-                    )
-                    payload["benchmark_value_bytes"] = benchmark_value_bytes
-
-            progreso = f"{i}/∞" if total == 0 else f"{i}/{total}"
-            print(f"[{progreso}] Enviando {payload['tipo']}: {payload}")
-
-            try:
-                response = requests.post(URL_CACHE, json=payload, timeout=60)
-                response.raise_for_status()
-                resultado = response.json()
-                print(f"  -> {resultado['status'].upper()}: respuesta desde {resultado['origen']}")
-            except requests.exceptions.RequestException:
-                print(f"  -> Error: La caché no está disponible en {URL_CACHE}")
-
-            time.sleep(tasa)
-    except KeyboardInterrupt:
-        print("\nTráfico detenido por el usuario.")
-        return
-
-    print("\nTráfico finalizado con éxito.")
 
 if __name__ == "__main__":
-    iniciar_trafico()
+    raise SystemExit(iniciar_trafico())

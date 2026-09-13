@@ -1,4 +1,5 @@
 import random
+from itertools import combinations
 
 TIPOS_CONSULTA = ["Q1", "Q2", "Q3", "Q4", "Q5"]
 EQUIPOS = [
@@ -47,3 +48,22 @@ def armar_payload(idx_consulta):
         })
         
     return payload
+
+
+def build_catalog(types=None, all_pairs=False):
+    """Catálogo estable de consultas completas para Uniforme y Zipf."""
+    types = TIPOS_CONSULTA if types is None else types
+    if not types or not set(types) <= set(TIPOS_CONSULTA):
+        raise ValueError('Tipos de consulta inválidos')
+    catalog = []
+    for tipo in types:
+        if tipo in ('Q1', 'Q2'):
+            catalog.extend(dict(tipo=tipo, slug=t['slug'], equipo_id=t['id']) for t in EQUIPOS)
+        elif tipo == 'Q3':
+            pairs = combinations(EQUIPOS, 2) if all_pairs else H2H_PARES
+            catalog.extend(dict(tipo=tipo, slug1=a['slug'], id1=a['id'], slug2=b['slug'], id2=b['id']) for a,b in pairs)
+        elif tipo == 'Q4':
+            catalog.extend(dict(tipo=tipo, fecha_inicio=f'{i:02d}.09', fecha_fin=f'{i+7:02d}.09') for i in range(1,21))
+        else:
+            catalog.append(dict(tipo=tipo))
+    return catalog
